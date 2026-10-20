@@ -1,0 +1,500 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidCloner: Dashboard</title>
+
+    <!-- External Stylesheets -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+     <!-- Internal Stylesheets -->
+    <link href="{% static 'assets/css/landingPage/dashboard.css' %}" rel="stylesheet">
+    {% block extra_css %}
+    <link href="{% static 'assets/css/progress-bars.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/timetable.css' %}" rel="stylesheet">
+    {% endblock %}
+
+</head>
+<body>
+    <header>
+    {%block header%}
+    <!--------------------------------------------Navbar Section-------------------------------------------->
+     
+    <nav class="navbar navbar-expand-lg">
+        {%block navbar%}
+        <div class="container-fluid row  p-0">
+            <!-- Toggler Button (visible only on small screens) -->
+            <div class="col-2 d-md-none">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <!-- Logo (visible only on large screens) -->
+            <div class="col-5 col-md-4 p-0">
+                <div class="logo row">
+                    <div class="col-4 col-md-3 p-0 logo-img">
+                        <img class="img-fluid " src="{% static 'assets/img/logo.svg' %}" alt="Logo">
+                    </div>
+                    <div class="col-8 col-md-9 p-0">
+                        <div class="logo-text">
+                            <div class="ps-2 ps-md-3">
+                                <span class="cloner-text">Vid</span>
+                                <span class="stylish-c">C</span>
+                                <span class="cloner-text">loner</span>
+                            </div>
+                            <div >
+                                <span class="cloner-text">Smart Assistant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Welcome Message (always visible) -->
+            <div class="col-5 col-md-5 welcomeUserContainer">
+                <div class="navbar-center">
+                    <div class="welcomeMessage"  id="welcomeUser" >
+                        <p >Welcome,<br> {{ user.username}}!</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Profile Section for large screen (visible only on large screens) -->
+            <div class="col-md-3 d-none d-md-flex profile-container">
+                <div class="profile-section">
+                    <!-- Profile avatar with background color and profile picture -->
+                    <div class="profile-avatar" id="profileAvatar">
+                        <img id="navbarprofileImage"  class="profile-avatar-img">
+                        <span id="navbaravatarInitials"></span>
+                    </div>
+                    <div class="profile-info">
+                        <p id="navbarProfileName">Account</p>
+                        <p id="navbarProfileEmail">{{ user.email }}</p>
+                    </div>
+                    <i class="bi bi-chevron-down profile-dropdown-icon"></i>
+                </div>
+            </div>
+
+        </div>
+        {% endblock %}
+    </nav>
+
+    <!--------------------------------------------Sidbar Section-------------------------------------------->
+    <div>
+        {%block sidebar%}
+        <!--Sidebar for both small and large screenscd-->
+        <div class="collapse navbar-collapse" id="sidebarMenu" aria-expanded="false">
+            <div class="sidebar">
+
+                <!--Profile Section for smaller screens sidebar (visible on sidebar)-->
+                <div class="profile-section d-sm-none">
+                    <!-- Profile avatar with background color and profile picture -->
+                    <div class="profile-avatar" id="profileAvatar">
+                            <img id="sidebarProfileImage"  class="profile-avatar-img">
+                            <span id="sidebaravatarInitials"></span>
+                    </div>
+                    <div class="profile-info">
+                        <p id="navbarProfileName">Account</p>
+                        <p id="navbarProfileEmail">{{ user.email }}</p>
+                    </div>
+                    <i class="bi bi-chevron-down profile-dropdown-icon"></i>
+                </div>
+                
+                <!--Links taht show on both smaller and larger screen sidebar-->
+                <div class="sidebar-links">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"> 
+                            <a href="{% url 'Dashboard' %}" class="nav-link">
+                                <i class="bi bi-house-fill"></i>
+                                <p>Home</p>
+                            </a>
+                        </li>
+                        <li class="nav-item "> 
+                            <a href="{% url 'summerizer'%}" class="nav-link">
+                                <i class="bi bi-play-circle-fill"></i>
+                                <p>Summerize</p>
+                            </a>
+                        </li>
+                        <li class="nav-item "> 
+                            <a href="{% url 'recommend'%}" class="nav-link">
+                                <i class="bi bi-book-half"></i>
+                                <div><p>Recommend</p></div>
+                                
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'timetable'%}" class="nav-link">
+                                <i class="bi bi-clock-fill"></i>
+                                <p>Time Table</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Setting Link at the Bottom -->
+                <div class="sidebar-footer">
+                    <ul class="nav flex-column">
+                        <li class="nav-item setting-link">
+                            <a href="{% url 'setting' %}" class="nav-link">
+                                <i class="bi bi-gear-fill"></i>
+                                <p>Setting</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--------------------------------------------Profile Dropdown Section-------------------------------------------->
+        <!-- Profile Dropdown Menu for large screen-->
+        <div class="profile-dropdown">
+            <button class="sidebar-dropdown-closeBtn" id="dropDownClose">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <a href="#">
+                <div class="profile-card">
+                    <div class="profile-card-avatar" id="profileCardAvatar">
+                                <img id="profileCardImage" class="profile-card-avatar-img">
+                                <span id="cardavatarInitials"></span>
+                            <div class="camera-icon">
+                                <i class="bi bi-camera"></i>
+                            </div>
+                    </div>
+                    <div class="profile-card-info">
+                        <h4 id="profileName">{{ user.username }}</h4>
+                        <p id="profileEmail">{{ user.email }}</p>
+                    </div>
+                </div>            
+            </a>
+            <a href="{% url 'setting' %}" >
+                <span class="d-flex">
+                    <i class="bi bi-gear"></i>
+                    <p>Settings</p>
+                </span>
+            </a>
+            <a href="{% url 'logout' %}">
+                <span class="d-flex">
+                    <i class="bi bi-arrow-bar-right"></i>
+                    <p>Logout</p>
+                </span>
+            </a>
+        </div>
+
+        {%endblock%}
+    </div>
+    <input type="file" id="profilePicInput" style="display: none;" accept="image/*">
+    {%endblock%}
+</header>
+
+<main class="main-area">
+{%block content%}
+<div class="main-area-container">
+    <div class="row no-gutters">
+        <!-- Feature Cards on Left -->
+        <div>
+            <div class="feature-cards-container">
+                <div id="featureCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div class="carousel-inner">
+                        <!-- First Card -->
+                        <div class="carousel-item active">
+                            <div class="feature-card" onclick="navigateToSummarize()">
+                                <i class="bi bi-play-circle"></i>
+                                <h3>Summarize Videos</h3>
+                                <p>Upload videos and get concise summaries instantly.</p>
+                            </div>
+                        </div>
+                        <!-- Second Card -->
+                        <div class="carousel-item">
+                            <div class="feature-card" onclick="navigateToRecommend()">
+                                <i class="bi bi-lightbulb"></i>
+                                <h3>Recommendations</h3>
+                                <p>Get personalized recommendations based on your preferences.</p>
+                            </div>
+                        </div>
+                        <!-- Third Card -->
+                        <div class="carousel-item">
+                            <div class="feature-card" onclick="navigateToTimeTable()">
+                                <i class="bi bi-calendar-check"></i>
+                                <h3>Time Table</h3>
+                                <p>Organize your tasks and manage your time effectively.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#featureCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#featureCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#featureCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#featureCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#featureCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Progress Charts on Right -->
+            <div class="progress-section">
+                <div class="progress-container">
+                    <!-- Weekly Progress Chart (Pie Chart) -->
+                    <div class="progress-chart-card progress-weekly-card mb-3">
+                        <div class="progress-card-header bg-primary text-white">
+                            <h5 class="mb-0">Weekly Progress</h5>
+                        </div>
+                        <div class="progress-card-body text-center">
+                            <img src="{{ weekly_progress_chart }}" alt="Weekly Progress Chart" class="img-fluid">
+                        </div>
+                    </div>
+                <div class="d-flex-column w-100">
+                    <!-- Daily Progress Chart (Bar Chart) -->
+                    <div class="progress-chart-card mb-3">
+                        <div class="progress-card-header bg-info text-white">
+                            <h5 class="mb-0">Daily Progress (Last 7-days)</h5>
+                        </div>
+                        <div class="progress-card-body text-center">
+                            <img src="{{ daily_progress_chart }}" alt="Daily Progress Chart" class="img-fluid">
+                        </div>
+                    </div>
+                    
+                    <!-- Course Progress Chart (Horizontal Bar Chart) -->
+                    <div class="progress-chart-card">
+                        <div class="progress-card-header bg-success text-white">
+                            <h5 class="mb-0">Course Progress</h5>
+                        </div>
+                        <div class="progress-card-body text-center">
+                            <img src="{{ course_progress_chart }}" alt="Course Progress Chart" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}
+</main>
+
+    <!-- External Scripts -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/dashboard.js' %}"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fetch today's timetable entries from the database
+        fetch('/time_table_module/today-timetable/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken'),
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                renderTodayTimetable(data.entries, data.today);
+            } else {
+                console.error('Error fetching timetable:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+        // Function to render today's timetable
+        function renderTodayTimetable(entries, dateStr) {
+            // Get today's date
+            const today = dateStr ? new Date(dateStr) : new Date();
+            const formattedDateForDisplay = today.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            
+            // Update the header to show today's actual date
+            const timetableHeader = document.querySelector('.timetable-header h3');
+            if (timetableHeader) {
+                timetableHeader.innerHTML = `<i class="bi bi-calendar-check"></i> Today's Schedule - ${formattedDateForDisplay}`;
+            }
+            
+            const timetableContent = document.querySelector('.timetable-content');
+            
+            if (entries && entries.length > 0) {
+                // Create cards for each course
+                const todayCoursesDiv = document.createElement('div');
+                todayCoursesDiv.className = 'today-courses';
+                
+                entries.forEach(entry => {
+                    const courseCard = document.createElement('div');
+                    courseCard.className = 'course-card';
+                    courseCard.dataset.entryId = entry.id;
+                    
+                    courseCard.innerHTML = `
+                        <div class="course-card-header">
+                            <h5>📚 ${entry.course_name}</h5>
+                        </div>
+                        <div class="course-card-body">
+                            <div class="course-time-slot">
+                                <h6>⏰ ${entry.time_slot}</h6>
+                            </div>
+                            <div class="course-details">
+                                <p>📊 Difficulty: ${entry.difficulty}</p>
+                                <p>⏳ Allocated Hours: ${calculateAllocatedHours(entry.time_slot)}</p>
+                                <p>⚠️ Priority: ${entry.priority}</p>
+                                <p>📅 Deadline: ${formatDate(entry.deadline)}</p>
+                            </div>
+                            <div class="course-status">
+                                <select class="form-select form-select-sm status-select" data-entry-id="${entry.id}">
+                                    <option value="pending" ${entry.status === 'pending' ? 'selected' : ''}>Pending</option>
+                                    <option value="completed" ${entry.status === 'completed' ? 'selected' : ''}>Completed</option>
+                                    <option value="missed" ${entry.status === 'missed' ? 'selected' : ''}>Missed</option>
+                                    <option value="rescheduled" ${entry.status === 'rescheduled' ? 'selected' : ''}>Rescheduled</option>
+                                </select>
+                            </div>
+                        </div>
+                    `;
+                    
+                    todayCoursesDiv.appendChild(courseCard);
+                });
+                
+                // Replace the empty timetable message if it exists
+                const emptyMessage = timetableContent.querySelector('.empty-timetable');
+                if (emptyMessage) {
+                    timetableContent.innerHTML = '';
+                    timetableContent.appendChild(todayCoursesDiv);
+                } else {
+                    timetableContent.innerHTML = '';
+                    timetableContent.appendChild(todayCoursesDiv);
+                }
+                
+                // Add event listeners to status selects
+                document.querySelectorAll('.status-select').forEach(select => {
+                    select.addEventListener('change', function() {
+                        const entryId = this.dataset.entryId;
+                        const newStatus = this.value;
+                        
+                        updateEntryStatus(entryId, newStatus);
+                    });
+                });
+            } else {
+                // If no entries for today, show the empty message
+                timetableContent.innerHTML = `
+                    <div class="empty-timetable">
+                        <i class="bi bi-info-circle"></i>
+                        <p>No schedules for today</p>
+                        <a href="/time_table_module/timetable/" class="btn btn-sm btn-outline-primary">Create Schedule</a>
+                    </div>
+                `;
+            }
+        }
+        
+        // Function to update entry status
+        function updateEntryStatus(entryId, status) {
+            fetch('/time_table_module/update-entry-status/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: JSON.stringify({
+                    entry_id: entryId,
+                    status: status
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log(data.message);
+                    
+                    // Update the UI to reflect the status change
+                    const courseCard = document.querySelector(`.course-card[data-entry-id="${entryId}"]`);
+                    if (courseCard) {
+                        // Remove any existing status classes
+                        courseCard.classList.remove('status-pending', 'status-completed', 'status-missed', 'status-rescheduled');
+                        // Add the new status class
+                        courseCard.classList.add(`status-${status}`);
+                    }
+                } else {
+                    console.error('Error updating status:', data.message);
+                    // Revert the select back to its previous value?
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+        
+        // Helper function to calculate hours between time slots
+        function calculateAllocatedHours(timeSlot) {
+            const [start, end] = timeSlot.split(' - ');
+            const [startHour, startMinute] = start.split(':').map(Number);
+            const [endHour, endMinute] = end.split(':').map(Number);
+            return ((endHour * 60 + endMinute) - (startHour * 60 + startMinute)) / 60;
+        }
+        
+        // Helper function to format dates
+        function formatDate(dateStr) {
+            if (!dateStr) return 'Not specified';
+            
+            try {
+                const date = new Date(dateStr);
+                if (isNaN(date.getTime())) {
+                    return dateStr; // Return original if not valid date
+                }
+                
+                const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                return date.toLocaleDateString(undefined, options);
+            } catch (e) {
+                console.error('Error formatting date:', e);
+                return dateStr;
+            }
+        }
+        
+        // Helper function to get CSRF token
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
+    </script>
+
+    {%block extra_js%}
+    <script type="application/json" id="weekly-progress-data">
+        {{ weekly_progress|safe }}
+    </script>
+    <script type="application/json" id="daily-progress-data">
+        {{ past_7_days|safe }}
+    </script>
+    <script src="{% static 'assets/js/progress-bars.js' %}"></script>
+    {%endblock%}
+</body>
+</html>

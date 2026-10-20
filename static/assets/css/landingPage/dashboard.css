@@ -1,0 +1,882 @@
+/*=================================================
+  Sidebar Styles for Larger Screens (768px and above)
+ ==================================================*/
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    background-color: #059ea3;
+    box-shadow: 0 4px 20px rgb(184, 180, 180); /* Default subtle shadow */
+    transition: box-shadow 0.3s ease-in-out;
+    z-index: 1030; /* Higher than sidebar */
+}
+
+.container-fluid {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; /* Ensure vertical alignment */
+}
+
+/* .welcomeUserContainer{
+    position: relative;
+    left:20px;
+    top:5px;
+} */
+
+/* Center the "Welcome User" text */
+.navbar-center {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    left: 2px;
+}
+
+/* Welcome message styling */
+.welcomeMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px; 
+    font-weight: bold; 
+    color: #ffffff; 
+    text-align: center; 
+    text-overflow: ellipsis;
+    line-height: 1.4; 
+    white-space: normal; 
+    max-width: 80%;
+}
+
+/* Display logo */
+.logo {
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: flex-start; /* Align items horizontally */
+    height: 70px; /* Keep consistent height */
+    position: relative;
+    flex-shrink: 1;
+    left: 20px;
+    margin: 0; /* Remove unnecessary outer spacing */
+    padding: 0; /* Remove unnecessary inner spacing */
+}
+
+.logo-img{
+    max-height: 80px; /* Keep the logo constrained */
+    max-width: 80px;
+    object-fit: contain; /* Ensure proper scaling */
+}
+
+/* The text section (Vid, C, and loner) */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align text to the left */
+    line-height: 1; /* Reduce vertical space between lines */
+    color: white;
+    font-size: 15px;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+
+/* Styling for "Vid" and "loner Smart Assistant" */
+.logo .cloner-text {
+    font-size: 1.5em; /* Adjust font size */
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+/* Styling for the stylish "C" */
+.logo .stylish-c {
+    font-family: 'Pacifico', cursive; /* Use Pacifico font for "C" */
+    font-size: 1.5em; /* Make "C" larger */
+    font-weight: bolder;
+    color: #ffffff; /* Coca-Cola red */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6); /* Glow effect */
+}
+
+/* Ensure the last part of the text "loner Smart Assistant" stays in one line */
+.logo .cloner-text:last-child {
+    font-size: 1.5em; /* Adjust the size for the rest of the text */
+}
+
+/* Sidebar styling for larger screens */
+.sidebar {
+    height: calc(100vh - 70px);
+    width: 65px; /* Sidebar width for larger screens */
+    padding-top: 10px;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid rgb(226, 226, 226);
+    box-shadow: 0 4px 20px rgba(75, 74, 74, 0.295);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Enhanced smooth transition */
+    z-index: 1025; /* Higher than main content but lower than navbar */
+    background-color: #ffffff; /* Ensures content doesn't show through */
+}
+
+/* Make sure the sidebar shows by default on larger screens */
+@media (min-width: 768px) {
+    #sidebarMenu {
+        display: block !important;
+    }
+    
+    #sidebarMenu .sidebar {
+        transform: none !important;
+        opacity: 1 !important;
+        display: flex !important;
+    }
+    
+    /* Adjust the main content area to leave space for the sidebar */
+    .main-area {
+        margin-left: 65px;
+        width: calc(100vw - 65px);
+    }
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.sidebar .nav {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #059ea3;
+    text-decoration: none;
+    padding: 8px 2px;
+}
+
+.nav-link i {
+    font-size: 20px; /* Increase icon size for better readability */
+}
+
+.nav-link p {
+    margin: 0;
+    font-size: 10px;
+    font-weight: bold;
+    text-wrap:wrap;
+}
+
+.nav-link:hover {
+    color: #059ea3;
+    background-color: #dbdbdb;
+    border-radius: 5px;
+}
+
+.sidebar-footer {
+    margin-top: auto; /* Push footer to the bottom */
+    border-top: 1px solid #ddd;
+    text-align: center;
+    position: relative;
+}
+
+.sidebar-footer .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #059ea3;
+}
+
+.nav-link.active {
+    color: #ffffff;
+    background-color: #059ea3;
+}
+
+/* Hide the toggler button on larger screens */
+.navbar-toggler {
+    display: none;
+}
+
+
+/*==================================
+  For Smaller Screens (Below 768px) 
+====================================*/
+@media (max-width: 767px) {
+    .welcomeUserContainer{
+        position: relative;
+        left:20px;
+        top:5px;
+    }
+    
+    .navbar-toggler {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        top:20px;
+        left: 20px;
+    }
+    
+    .navbar-toggler-icon{
+        width: 20px;
+        height: 20px;
+        color: white;
+        position: absolute;
+    }
+
+    .welcomeMessage {
+        font-size: 12px; /* Increase font size for readability */
+        line-height: 1.2; /* Slightly increased for better spacing */
+    }
+
+    .logo{
+        left: 20%;
+        position: absolute;
+        top: 0;
+    }
+
+    .logo-img{
+        max-width: 70px;
+        max-height: 70px;
+    }
+
+    .logo-text{
+        font-size: 9px;
+    }
+
+    /* Start mobile sidebar styles with improved transitions */
+    .sidebar {
+        width: 90%;
+        padding-top: 20px;
+        justify-content: flex-start;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease-in-out !important; /* Smoother easing */
+        transform: translateX(-100%) !important; /* Force off-screen by default */
+        overflow-y: auto;
+        z-index: 1029; /* Higher z-index on mobile */
+        background-color: #ffffff;
+        opacity: 0.8; /* Start with slight transparency */
+        will-change: transform, opacity; /* Optimize for animation */
+    }
+
+    /* Only show sidebar when the collapse element has the 'show' class and explicitly overrides the default state */
+    #sidebarMenu.show .sidebar {
+        transform: translateX(0) !important; /* Force visible only when explicitly shown */
+        opacity: 1; /* Full opacity when visible */
+        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow effect when shown */
+    }
+
+    .nav-link {
+        flex-direction: row;
+        align-items: center; 
+        border-bottom: 1px solid #ddd;
+        width: 100%;
+        padding: 10px 15px;
+    }
+
+    .nav-link i {
+        font-size: 20px; /* Adjust icon size for mobile */
+        margin-right: 10px; /* Space between icon and text */
+    }
+
+    .nav-link p {
+        font-size: 14px;
+    }
+
+    .sidebar-footer {
+        display: block;
+        padding: 10px 0;
+        margin-bottom: 50px;
+    }
+}
+@media(min-width:768px) and (max-width: 991px){
+    .welcomeUserContainer{
+        position: relative;
+        right:20px;
+        top:5px;
+    }
+
+    .welcomeMessage {
+        font-size: 15px; /* Increase font size for readability */
+        line-height: 1.2; /* Slightly increased for better spacing */
+    }
+
+
+    .logo-text{
+        font-size: 12px;
+    }
+}
+
+/* ==========================
+    Profile Section
+   ========================== */
+
+/* Profile area show at the navbar */
+.profile-container {
+    display: flex;
+    justify-content:flex-end; /* Aligns content to the right */
+    align-items: center; /* Centers items vertically */
+}
+.profile-section {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    gap: 10px; /* Adds spacing between elements */
+    width: 80%;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect on profile section on navbar*/
+.profile-section:hover {
+    background-color:#054547c7;  /* Darker background on hover */
+    border-radius: 20px;
+    cursor: pointer; /* Show pointer cursor on hover */
+}
+
+/* Profile area Avatar in Navbar */
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color:white;
+}
+
+.profile-card-avatar-img,
+.profile-avatar-img {
+    width: 100%; /* Ensure this matches the container size */
+    height: 100%; /* Ensure this matches the container size */
+    border-radius: 50%; /* Forces the image to be circular */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Profile Info (e.g. Name, Email) Styling */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    width: auto;
+    overflow: hidden;
+}
+
+/* Styling to show email at very bigening in navbar */
+.profile-info p {
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Profile section Dropdown Styles in navbar */
+.profile-dropdown {
+    position: fixed;
+    right: 2px;
+    top:10%;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1031; /* Higher than both sidebar and navbar */
+}
+
+/* Show dropdown menu for profile setion in navbar when active */
+.profile-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Styling for Links under navbar Dropdown profile section */
+.profile-dropdown a {
+    display: block;
+    padding: 4px 4px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-dropdown a span i{
+    font-size: 20px;
+    padding-right: 8px;
+}
+.profile-dropdown a span p{
+    padding-top: 4px;
+}
+
+.profile-dropdown-icon{
+    color: white;
+}
+
+/* profile sectoin under navbar dropdown */
+.profile-card {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Styling for links (e.g. Name, Email) in profile sectoin under navbar dropdown */
+.profile-card-info{
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+    overflow: hidden;
+}
+
+.profile-card-info p{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Avatar Button Styling for profile sectoin under navbar dropdown */
+.profile-card-avatar-button {
+    border-radius: inherit;
+    border: transparent;
+    background-color: transparent;
+}
+
+/* Styling for profile sectoin avatar under navbar dropdown */
+.profile-card-avatar {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+.profile-card-avatar span{
+    font-size: 30px;
+    font-weight: bold;
+    color:white;
+}
+
+/* The camera icon that shows up when hovering over the avatar circle under navbar dropdown */
+.camera-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #000000;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+/* Show camera icon when hovering over the avatar under navbar dropdown*/
+.profile-card-avatar:hover .camera-icon {
+    opacity: 1; 
+}
+
+/* Change background color and opacity when hovering over the profile avatar under navbar dropdown*/
+.profile-card-avatar:hover {
+    background-color: #888; 
+    opacity: 0.7; 
+}
+
+.camera-container{
+    position: absolute;
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    top: 60%;
+    left: 60%;
+}
+
+.sidebar-dropdown-closeBtn {
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    background-color: transparent; 
+    border: none; 
+    padding: 10px; 
+    cursor: pointer; 
+    z-index: 10; 
+}
+
+@media (max-width:767px){
+    .profile-section {
+        width: 95%;
+        border-bottom: 1px solid rgb(107, 106, 106);
+    }
+
+    .profile-info{
+        color: black;
+    }
+    
+    .profile-dropdown{
+        top: 110px; 
+        left: 0px; 
+        width: 100%; 
+        height: 100%;
+        visibility: hidden;
+        transform: translateY(10px);
+        }
+        
+        .profile-dropdown-icon{
+            color: #7c0d0d;
+        }
+
+        .profile-dropdown a{
+            display: block;
+            padding: 6px 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .profile-dropdown a span i{
+            font-size: 15px;
+            padding-right: 6px;
+        }
+
+        .profile-card-info{
+            margin-top: 10px;
+        }
+
+        .profile-card-avatar{
+            width: 80px;
+            height: 80px;
+        }
+}
+
+
+/*-------------main------------------*/
+body {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.main-area{
+    position: fixed; /* Keep the container fixed */
+    overflow: hidden; /* Changed from auto to hidden so container controls overflow */
+    width: 100%;
+    height: calc(100vh - 75px); /* Set height to viewport minus navbar */
+    top: 75px; /* Leave space for the navbar */
+    z-index: 1020; /* Lower than sidebar and navbar */
+}
+
+.main-area-container{
+    overflow-y: auto; /* Changed from just auto to specifically y-axis */
+    width: 95%;
+    height: 100%; /* Take full height of parent */
+    padding: 20px; /* Add some padding for better appearance */
+    box-sizing: border-box; /* Include padding in the width/height calculation */
+}
+
+.welcome-section {
+    text-align: center;
+    margin-top: 50px;
+    color: #333;
+}
+
+.welcome-section h1 {
+    font-size: 36px;
+    color: #059ea3;
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #059ea3;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #047b81;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card i {
+    font-size: 40px;
+    color: #059ea3;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #555;
+}
+
+
+.recent-activity {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recent-activity h2 {
+    font-size: 24px;
+    color: #059ea3;
+    margin-bottom: 10px;
+}
+
+.recent-activity ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-activity li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Feature cards carousel styling */
+.feature-cards-container {
+    padding: 15px;
+    border-radius: 10px;
+    background-color:#059ea3;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Hide overflows for slide animations */
+}
+
+.carousel {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-inner {
+    border-radius: 10px;
+    min-height: 300px; /* Set minimum height to avoid jumps */
+    position: relative;
+}
+
+/* Enhanced slide transition effect */
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transition: transform 1s ease, opacity 1s ease; /* Longer smooth transition */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+}
+
+.carousel-item.active {
+    opacity: 1;
+    position: relative;
+    transform: translateX(0); /* Reset position when active */
+}
+
+/* Sliding animation for incoming slides */
+.carousel-item-next:not(.carousel-item-start),
+.active.carousel-item-end {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* Sliding animation for outgoing slides */
+.carousel-item-prev:not(.carousel-item-end),
+.active.carousel-item-start {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.feature-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 50px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card i {
+    font-size: 100px;
+    color: #059ea3;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover i {
+    transform: scale(1.1);
+}
+
+.feature-card h3 {
+    font-size: 24px;
+    color: #059ea3;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    font-size: 16px;
+    color: #059ea3;
+    line-height: 1.5;
+}
+
+/* Custom carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    /* opacity: 0; */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.carousel:hover .carousel-control-prev,
+.carousel:hover .carousel-control-next {
+    opacity: 1;
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(167, 168, 168, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-indicators {
+    bottom: 0;
+}
+
+.carousel-indicators button {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50%;
+    background-color: rgba(5, 158, 163, 0.5);
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-indicators button.active {
+    background-color: #059ea3;
+    width: 12px;
+    height: 12px;
+}
+
+/* Responsive adjustments for feature cards */
+@media (max-width: 768px) {
+    .carousel-inner {
+        min-height: 250px;
+    }
+    
+    .feature-card {
+        padding: 20px;
+    }
+    
+    .feature-card i {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+    
+    .feature-card h3 {
+        font-size: 20px;
+    }
+    
+    .feature-card p {
+        font-size: 14px;
+    }
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

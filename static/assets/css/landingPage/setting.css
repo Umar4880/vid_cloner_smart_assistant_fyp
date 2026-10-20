@@ -1,0 +1,790 @@
+/* General container styling for responsiveness */
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    margin: 0;
+    padding: 0;
+}
+
+
+/*==========================
+  styling for navbar profiel 
+  ========================== */
+
+  .profile-section{
+    width: 60px;
+  }
+
+  /* .profile-container{
+    width: 70px;
+  } */
+
+  .profile-section i{
+    display: none;
+  }
+
+  .profile-section:hover{
+    background-color: transparent;
+  }
+
+
+/*==========================
+  Setting menu styling
+  ========================== */
+
+  /* main setting menu styling */
+.setting-menu {
+    position: fixed; /* Fixes the menu to the viewport */
+    top: 70px; /* Aligns it to the top */
+    left: 65px; /* Aligns it to the left */
+    width: 300px; /* Adjust width as needed */
+    height: 100vh; /* Makes it occupy the full viewport height */
+    overflow-y: auto; /* Allow scrolling if content in the menu overflows */
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    z-index: 10; /* Keeps it on top of other elements if necessary */
+}
+
+/* setting menu Profile Section */
+.setting-profile-section {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd; /* Separate profile from menu */
+}
+
+/* setting menu Avatar Styling */
+.setting-profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #ddd;
+}
+
+/* setting menu Profile Info */
+.setting-profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #333;
+    max-width: 150px; /* Prevent overflow */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.setting-profile-info p {
+    font-size: 14px;
+    color: #444;
+    margin: 0;
+}
+
+.setting-profile-info small {
+    font-size: 12px;
+    color: #777;
+}
+
+/* setting menu ul section (where link (e.g. your account, login & privacy) present) */
+.setting-menu .setting-nav {
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+}
+
+
+/* setting menu ul section Navigation items */
+.setting-menu .nav-item {
+    list-style: none;
+    padding: 5px;
+}
+
+/* setting menu ul section Navigation Links */
+.setting-menu .nav-link {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    color: #059ea3;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* setting menu ul section Navigation Links icons*/
+.setting-menu .nav-link i {
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+/* setting menu ul section Navigation Links text*/
+.setting-menu .nav-link p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* Hover and Active State */
+.setting-menu .nav-link:hover {
+    background-color: #dbdbdb;
+    color: #059ea3;
+}
+
+.nav-link .d-md-active{
+    background-color: #059ea3;
+    color: #ffffff;      
+}
+
+/* setting menu ul section Navigation Links bg change when active*/
+.setting-menu .nav-link.active {
+    background-color: #059ea3;
+    color: #ffffff;
+}
+
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    header{
+        display: none !important;
+    }
+    .setting-header{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        position: fixed;
+        width: 100%;
+        top:0;
+        left: 0;
+        z-index: 999;
+    }
+    .setting-header h2{
+        margin-left: 30%;
+    }
+
+    .setting-header i{
+        font-size: 30px;
+    }
+
+    .setting-menu {
+        position: fixed; /* Fix the menu at the top */
+        top: 50px; /* Adjusted top to leave space for the header */
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px); /* Full height minus the height of the header */
+        background-color: #ffffff;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+
+    .setting-menu{
+        left: 8%;
+        width: 200px;
+    }
+    .setting-profile-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .setting-profile-info p {
+        font-size: 12px;
+    }
+
+    .setting-profile-info small {
+        font-size: 10px;
+    }
+
+    .setting-menu .nav-link p {
+        font-size: 13px;
+    }
+
+    .setting-menu .nav-link i {
+        font-size: 16px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .setting-menu{
+        width: 220px;
+    }
+    .setting-profile-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .setting-profile-info p {
+        font-size: 12px;
+    }
+
+    .setting-profile-info small {
+        font-size: 10px;
+    }
+
+    .setting-menu .nav-link p {
+        font-size: 13px;
+    }
+
+    .setting-menu .nav-link i {
+        font-size: 16px;
+    }
+}
+
+/*==================================
+ styling for showing setting content
+ ===================================*/
+
+ .account,
+ .security{
+    width: 100%;
+    height: 100%;
+}
+
+.setting-content::-webkit-scrollbar {
+    width: 12px; /* Scrollbar width */
+    border-top-right-radius: 20px; /* Match the border-radius of the container */
+}
+
+.setting-content::-webkit-scrollbar-track {
+    background: #dad9d9; /* Background of the track */
+    border-top-right-radius: 20px; /* Match the border-radius of the container */
+}
+
+.setting-content::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-top-right-radius: 20px; /* Match the border-radius of the container */
+    border: 2px solid #f1f1f1; /* Optional: Add spacing to blend with track */
+}
+
+.setting-content::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker shade when hovering */
+}
+
+/* Content Area */
+.setting-content {
+    width: 100%;
+    max-width: 70%;
+    padding: 20px;
+    top:75px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    height: 100%;
+    max-height: 87%;
+    overflow-y: auto; /* Allow scrolling for content overflow */
+    box-shadow: 0 4px 8px #535353dc;
+    position: fixed;
+    border-radius: 20px;
+    z-index: -1;
+}
+
+/* setting content profile picture */
+.setting-content-profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 45px;
+    font-weight: bold;
+    border: 2px solid #ddd;
+}
+
+.profile-picture,
+.name,
+.email,
+.password,
+.twoFA{
+    border-bottom: 1px solid #ddd;
+}
+
+.set-cnt-profile-picture,
+.display-name,
+.display-email,
+.display-password,
+.displayEmail2FA,
+.displayPhone2FA,
+.addEmail2FA, .addPhone2FA{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+}
+
+.display-name p,
+.display-email p,
+.display-password p,
+.displayEmail2FA p, .displayEmail2FA i,
+.displayPhone2FA p, .displayPhone2FA i,
+.addEmail2FA p, .addEmail2FA i,
+.addPhone2FA p, .addPhone2FA i{
+    padding-top: 15px;
+    font-size: 16px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.twoFAemail-with-icon,
+.twoFAphone-with-icon{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.photo-edit-button button,
+.name button,
+.email button,
+.password button,
+.twoFA button{
+    border-radius: 10px;
+    width: 80px;
+    height: 40px;
+    background-color: #1dc8cd;
+    color: white;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.photo-edit-button button:hover,
+.name button:hover,
+.email button:hover,
+.password button:hover,
+.twoFA button:hover{
+    background-color: #059ea3;
+}
+
+.edit-name input,
+.edit-email input,
+.edit-password input,
+.exit-password input,
+.setupEmail2FA input,
+.setupPhone2FA input{
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.photo-edit-button,
+.name-edit-button,
+.email-edit-button,
+.password-edit-button,
+.password-exist-button,
+.Email2FA-edit-button,
+.Phone2FA-edit-button{
+    display: flex;
+    justify-content: flex-end; 
+    gap: 10px; 
+    align-items: center; 
+    margin-top: 5px;
+}
+
+.enable2FA,
+.toggler{
+    display: flex;
+    justify-content: flex-end;
+    align-items:start;
+}
+
+.enable2FA-text{
+    width: 100%;
+    max-width: 60%;
+}
+
+/* Slider container */
+.slider-toggle {
+    width: 70px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    margin: 10px 0;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Slider handle */
+.slider-handle {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    transition: left 0.3s;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Active state */
+.slider-toggle.active {
+    background-color: #4CAF50;
+}
+
+.slider-toggle.active .slider-handle {
+    left: calc(100% - 25px);
+}
+
+.criteria {
+    color: red;
+    margin: 5px;
+}
+
+.criteria.met{
+    color: green;
+}
+
+.passwordCriteria{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+/* Modal styling */
+.modal-backdrop{
+    display: none;
+}
+.modal {
+    position: absolute;
+    background-color: rgba(0,0,0,0.4); /* Black with opacity */
+    height: 100vh;
+}
+
+.modal-header,
+.modal-body{
+    text-align: center;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    text-overflow:clip;
+}
+
+.alert{
+    width: 100%;
+    height: 70px;
+}
+
+.modal-content input {
+    display: block; /* Ensures the input is visible */
+    margin: 10px auto; /* Centers the input field */
+    padding: 10px;
+    font-size: 16px;
+    width: 90%; /* Adjust width as needed */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.verification-result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.verification-result i{
+    font-size: 35px;
+    color: white;
+}
+.verification-result p{
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.modal-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-footer button{
+    padding: 10px;
+    background: #1dc8cd;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.modal-footer .tryMethod{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: auto;
+    height: 30px;
+    overflow: hidden;
+}
+.modal-footer span{
+    padding: 5px 5px;
+    color: rgb(8, 74, 173);
+    font-weight: bold;
+}
+
+.modal-footer span:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.modal-footer i{
+    font-size: 25px;
+    font-weight: bold;
+    border: 1px solid #888;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    margin:auto 2px;
+    cursor: pointer;
+    /* transition: 0.3s ease-in-out; */
+}
+
+/* @keyframes GetTranslateX{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(200px);
+    }
+}
+.modal-footer i:hover{
+    background-color: #1dc8cd;
+    color: white;
+    animation: GetTranslateX 1.5s ease-in-out;
+} */
+.modal-footer button:hover{
+    background-color:#059ea3;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 767px){
+    .account h3,p{
+        font-size: 15px;
+    }
+
+    .setting-content {
+        padding: 15px;
+        display: none;
+        position: fixed;
+        max-width: 100%;
+        left: 0;
+    }
+    .setting-content-profile-avatar{
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+
+    .setting-profile-info {
+        max-width: 100%; 
+        text-align: left;
+    }
+    .slider-toggle{
+        width:50px;
+        height: 25px;
+    }
+    .slider-handle{
+        width: 16px;
+        height: 16px;
+    }
+    .slider-toggle.active .slider-handle {
+        left: calc(100% - 20px);
+    }
+
+    .photo-edit-button button,
+    .name button,
+    .email button,
+    .password button,
+    .twoFA button{
+        width: 60px;
+        height: 30px;
+        font-size: 13px;
+    }
+    .modal-body, .modal p, 
+    .modal-header{
+        font-size: small;
+        text-align: center;
+        word-wrap:break-word;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .account h3{
+        font-size: 20px;
+    }
+
+    .setting-content {
+        left: 260px;
+        max-width: 63%;
+        padding: 15px;
+    }
+
+    .setting-content-profile-avatar{
+        width: 75px;
+        height: 75px;
+        font-size: 35px;
+    }
+
+    .setting-profile-info {
+        max-width: 100%; 
+        text-align: left;
+    }
+    .slider-toggle{
+        width:60px;
+        height: 30px;
+    }
+
+    .photo-edit-button button,
+    .name button,
+    .email button,
+    .password button,
+    .twoFA button{
+        width: 65px;
+        height: 35px;
+        font-size: 15px;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    .setting-content {
+        left: 285px;
+        max-width: 71%;
+        padding: 15px;
+    }
+
+    .setting-profile-info {
+        max-width: 100%; 
+        text-align: left;
+    }
+}
+
+/*-------contact-----------*/
+.contact {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block; /* Ensure it is visible when toggled */
+}
+
+.contact .info-item {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 20px;
+}
+
+.contact .info-item i {
+    color: #059ea3;
+    background: rgba(5, 158, 163, 0.1);
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.contact .info-item h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333; /* Dark text color */
+}
+
+.contact .info-item p {
+    font-size: 14px;
+    color: #555; /* Subtle text color */
+}
+
+.contact .info-item:hover i {
+    background: #059ea3; /* Darker background on hover */
+    color: #fff; /* White icon color */
+}
+
+.contact .php-email-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact .php-email-form input[type="text"]:focus,
+.contact .php-email-form input[type="email"]:focus,
+.contact .php-email-form textarea:focus {
+    border-color: #059ea3; /* Accent color on focus */
+    outline: none;
+}
+
+.contact .php-email-form button {
+    background: #059ea3;
+    width: 100%;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact .php-email-form button:hover {
+    background: #047b81;
+}

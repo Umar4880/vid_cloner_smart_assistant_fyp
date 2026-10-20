@@ -1,0 +1,1474 @@
+/* CSS Custom Properties for consistent theming */
+:root {
+    --primary-color: #059ea3;
+    --primary-hover: #047b81;
+    --background-light: #f9f9f9;
+    --background-notes: #eef2f3;
+    --border-color: #ddd;
+    --text-color: #333;
+    --text-light: #777;
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --spacing-sm: 5px;
+    --spacing-md: 10px;
+    --spacing-lg: 20px;
+}
+
+/* Layout */
+.summerizer-container {
+    position: fixed;
+    left: 75px;
+    top: 75px;
+    width: calc(100vw - 75px);
+    height: calc(100vh - 75px);
+    overflow: visible;
+    background-color: #ffffff;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Upload Form */
+.form {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-light);
+    box-shadow: var(--shadow);
+}
+
+/* Video Upload Section with Menu Button */
+.video-upload-section {
+    margin-bottom: var(--spacing-md);
+}
+
+.video-upload-section .row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.uploader-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 15px 0;
+    width: 100%;
+    flex: 0 0 auto; /* Prevent flex growth */
+}
+
+.video-upload {
+    flex: 1;
+}
+
+.video-upload .form {
+    width: 100%;
+}
+
+#videoUploader {
+    display: none;
+}
+
+/* Custom file upload button styling to match height of menu button */
+.custom-file-upload {
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 3px dashed var(--primary-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-light);
+    color: var(--primary-color);
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+    background-color: #e6f7ff;
+}
+
+.custom-file-upload i {
+    margin-right: var(--spacing-md);
+}
+
+/* Notes Section */
+.notes-section {
+    width: 100%;
+    margin-left: 1px;
+    margin-top: 0;
+    background-color: transparent;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    overflow: visible;
+    min-height: 0;
+    height: 0; /* Important: set to 0 so flex-grow takes over */
+}
+
+/* Notes Sidebar */
+.notes-sidebar {
+    background-color: #e7f6f7c0;
+    border-right: 4px double #ffffff;
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    box-shadow: var(--shadow);
+    height: 100%;
+    min-height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.desktop-sidebar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.notes-sidebar h4 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: var(--spacing-lg);
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-bottom: 1px solid #ffffff;
+}
+
+/* Note List */
+#noteList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.note-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.note-item:hover {
+    background-color: #d0f2f3;
+    border: 1px solid rgb(160, 210, 212);
+    color: #043235;
+    transform: translateY(-2px);
+}
+
+.note-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    margin-right: var(--spacing-md);
+}
+
+/* Menu Button */
+.summ-menu-button {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 0 var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.note-item:hover .summ-menu-button {
+    visibility: visible;
+    opacity: 1;
+}
+
+.summ-menu-button:hover {
+    color: var(--primary-color);
+}
+
+/* Dropdown Menu */
+.summ-dropdown-menu {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.summ-dropdown-option {
+    background: none;
+    border: none;
+    padding: var(--spacing-md);
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.summ-dropdown-option:hover {
+    background-color: #f4f4f4;
+    color: var(--primary-color);
+}
+
+/* Rename Input */
+.rename-input {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rename-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(5, 158, 163, 0.5);
+}
+
+/* Notes Content Container */
+.notes-container {
+    background-color: var(--background-notes);
+    padding: var(--spacing-md);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    width: 100%;
+    box-shadow: var(--shadow);
+    height: calc(100vh - 300px); /* Increased height to show more content */
+    min-height: 410px;
+    overflow-y: auto;
+    border:1px solid #cdedf0;
+}
+
+/* Placeholder States */
+#initialPlaceholder, #waitingPlaceholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.placeholder-text {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: var(--spacing-md);
+}
+
+.placeholder-subtext {
+    font-size: 16px;
+    color: var(--text-light);
+}
+
+/* Icon Animations */
+.sad-icon, .waiting-icon {
+    width: 200px;
+    height: 200px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.sad-icon {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes blink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+}
+
+@keyframes lookAround {
+    0%, 50%, 100% { transform: translate(0, 0); }
+    75% { transform: translate(2px, -2px); }
+}
+
+@keyframes eyebrowMove {
+    0%, 50%, 100% { transform: translateY(0); }
+    75% { transform: translateY(-2px); }
+}
+
+@keyframes mouthMove {
+    0%, 50%, 100% { transform: translateY(0); }
+    75% { transform: translateY(-2px); }
+}
+
+/* Animated Elements */
+#initialRightEye, #initialLeftEye {
+    transform-origin: center;
+    animation: blink 3s infinite;
+}
+
+#leftPupil, #rightPupil {
+    animation: lookAround 3s infinite;
+}
+
+#leftEyebrow, #rightEyebrow {
+    animation: eyebrowMove 3s infinite;
+}
+
+#mouth {
+    animation: mouthMove 3s infinite;
+}
+
+/* Markdown Styling */
+.markdown-body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.markdown-body h1, 
+.markdown-body h2, 
+.markdown-body h3 {
+    text-align: center;
+    margin: var(--spacing-lg) 0 var(--spacing-md);
+    font-weight: bold;
+}
+
+.markdown-body h1:first-of-type, 
+.markdown-body h2:first-of-type, 
+.markdown-body h3:first-of-type {
+    margin-top: 0;
+    border-top: none;
+}
+
+.markdown-body p {
+    margin: var(--spacing-md) 0;
+}
+
+.markdown-body ul {
+    list-style-type: disc;
+    margin-left: var(--spacing-lg);
+}
+
+.markdown-body ol {
+    list-style-type: decimal;
+    margin-left: var(--spacing-lg);
+}
+
+.markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-lg) 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+.markdown-body th, 
+.markdown-body td {
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-sm);
+}
+
+.markdown-body th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Save Button */
+.save-summary-btn {
+    display: inline-block;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-summary-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* ====================== MOBILE SLIDE-IN MENU ====================== */
+
+/* Mobile menu section styles */
+.mobile-menu-section {
+    width: 4rem;
+    margin-bottom: 15px;
+    display: none;
+    padding: 0 var(--spacing-sm) 0 0;
+}
+
+@media screen and (max-width: 767px) {
+    .desktop-sidebar {
+        display: none !important;
+    }
+    
+    .mobile-menu-section {
+        display: block;
+        width: auto;
+        flex: 0 0 auto;
+        margin-right: 10px;
+    }
+    
+    .uploader-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    
+    .video-upload {
+        flex: 1;
+    }
+    
+    .video-upload .form {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .summ-mobile-menu-button,
+    .custom-file-upload {
+        height: 64px;
+    }
+}
+
+/* Mobile menu button styling */
+.summ-mobile-menu-button {
+    display: block;
+    width: 100%;
+    height: 73px; /* Match the height of the upload button */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    text-align: center;
+    font-weight: bold;
+}
+
+.summ-mobile-menu-button i {
+    margin-right: 5px;
+}
+
+/* Slide-in menu styles */
+.summ-slide-in-menu {
+    position: fixed;
+    top: 150px; /* Start below the header */
+    left: -280px; /* Start off-screen from left side instead of right */
+    width: 280px;
+    height: calc(100vh - 75px); /* Height from below header to bottom of screen */
+    background-color: #ffffff;
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2); /* Shadow on right side */
+    z-index: 1000;
+    transition: left 0.3s ease-in-out; /* Change transition property from right to left */
+    overflow-y: auto;
+}
+
+.summ-slide-in-menu.open {
+    left: 0; /* Slide to left=0 instead of right=0 */
+}
+
+.summ-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.slide-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.slide-menu-header h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.summ-close-menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.mobile-note-list {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.mobile-note-list .note-item {
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 10px;
+    margin-bottom: 0;
+}
+
+.mobile-note-list .note-item:last-child {
+    border-bottom: none;
+}
+
+/* ====================== RESPONSIVE DESIGN ====================== */
+
+/* Large Desktop Monitors and TVs (>=1800px) */
+@media screen and (min-width: 1800px) {
+    .summerizer-container {
+        padding: calc(var(--spacing-lg) * 1.5);
+    }
+    
+    .custom-file-upload {
+        height: 180px;
+        font-size: 28px;
+    }
+    
+    /* .notes-container, .notes-sidebar {
+        height: calc(100vh - 350px);
+    } */
+    
+    .markdown-body {
+        font-size: 18px;
+    }
+    
+    .note-item {
+        font-size: 18px;
+        padding: var(--spacing-md);
+    }
+}
+
+/* Standard Desktop/Laptop (1200px - 1799px) */
+@media screen and (min-width: 1200px) and (max-width: 1799px) {
+    /* Default styles already work well at this resolution */
+}
+
+/* Small Desktop and Tablets in Landscape (992px - 1199px) */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .summerizer-container {
+        padding: var(--spacing-md);
+    }
+    
+    .custom-file-upload {
+        height: 120px;
+        font-size: 20px;
+    }
+/*     
+    .notes-container, .notes-sidebar {
+        height: calc(100vh - 300px);
+    } */
+}
+
+/* Tablets in Portrait Mode (768px - 991px) */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .summerizer-container {
+        padding: var(--spacing-md);
+        top: 70px;
+    }
+    
+    .custom-file-upload {
+        height: 100px;
+        font-size: 18px;
+    }
+    
+    .notes-section {
+        flex-direction: column;
+    }
+    
+    /* .notes-container, .notes-sidebar {
+        height: auto;
+    } */
+    
+    .notes-sidebar {
+        border-right: none;
+        border-bottom: 4px double #ffffff;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+        max-height: 300px;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    /* .notes-container {
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        max-height: calc(100vh - 300px);
+    } */
+    
+    .markdown-body table {
+        font-size: 14px;
+    }
+    
+    .placeholder-text {
+        font-size: 18px;
+    }
+    
+    .sad-icon, .waiting-icon {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Large Smartphones (576px - 767px) */
+@media screen and (max-width: 767px) {
+    .desktop-sidebar {
+        display: none !important;
+    }
+    
+    .mobile-menu-section {
+        display: block;
+    }
+    
+    /* Adjust container positioning for mobile */
+    .summerizer-container {
+        left: 0;
+        width: 100vw;
+        padding: var(--spacing-md);
+    }
+    
+    .custom-file-upload {
+        height: 64px;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .notes-section {
+        flex-direction: column;
+    }
+    
+    .notes-container {
+        height: calc(100vh - 230px);
+    }
+    
+    .notes-sidebar {
+        border-right: none;
+        border-bottom: 4px double #ffffff;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+        max-height: 180px;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .notes-container {
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        min-height: 500px;
+    }
+    
+    .notes-sidebar h4 {
+        font-size: 16px;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .note-item {
+        font-size: 14px;
+        padding: 4px;
+    }
+    
+    .summ-menu-button {
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    .markdown-body {
+        font-size: 14px;
+    }
+    
+    .markdown-body table {
+        font-size: 12px;
+    }
+    
+    .placeholder-text {
+        font-size: 16px;
+    }
+    
+    .sad-icon, .waiting-icon {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .save-summary-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    
+    .video-upload-section {
+        flex-wrap: wrap;
+    }
+    
+    /* In very narrow screens, stack the upload button below the menu button */
+    @media screen and (max-width: 400px) {
+        .video-upload-section {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .summ-mobile-menu-button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+/* Small Smartphones (320px - 575px) */
+@media screen and (max-width: 575px) {
+    .summerizer-container {
+        left: 0;
+        width: 100vw;
+        padding: 5px;
+    }
+    
+    .custom-file-upload {
+        height: 60px;
+        font-size: 14px;
+    }
+    
+    .custom-file-upload i {
+        margin-right: 5px;
+    }
+    
+    .notes-section {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    
+    .notes-container, .notes-sidebar {
+        width: 100%;
+        padding: 5px;
+        min-height: 500px;
+    }
+    
+    .notes-sidebar {
+        border-right: none;
+        border-bottom: 4px double #ffffff;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+        max-height: 150px;
+        margin-bottom: 10px;
+    }
+    
+    .notes-container {
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        max-height: calc(100vh - 350px);
+    }
+    
+    .notes-sidebar h4 {
+        font-size: 14px;
+        margin-bottom: 10px;
+        padding: 5px 0;
+    }
+    
+    .note-item {
+        font-size: 12px;
+        padding: 3px;
+        margin-bottom: 3px;
+    }
+    
+    .summ-menu-button {
+        visibility: visible;
+        opacity: 1;
+        font-size: 14px;
+    }
+    
+    .markdown-body {
+        font-size: 12px;
+    }
+    
+    .markdown-body h1 {
+        font-size: 18px;
+    }
+    
+    .markdown-body h2 {
+        font-size: 16px;
+    }
+    
+    .markdown-body h3 {
+        font-size: 14px;
+    }
+    
+    .markdown-body table {
+        font-size: 10px;
+    }
+    
+    .placeholder-text {
+        font-size: 14px;
+    }
+    
+    .placeholder-subtext {
+        font-size: 12px;
+    }
+    
+    .sad-icon, .waiting-icon {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .save-summary-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+        margin-top: 10px;
+    }
+    
+    .summ-dropdown-menu {
+        width: 120px;
+        padding: 5px;
+    }
+    
+    .summ-dropdown-option {
+        font-size: 12px;
+        padding: 5px;
+    }
+    
+    .summ-mobile-menu-button {
+        display: block;
+    }
+    
+    .desktop-sidebar {
+        display: none !important;
+    }
+    
+    .uploader-container [class*="col-"] {
+        padding: 0;
+    }
+    
+    .summ-mobile-menu-button, .custom-file-upload {
+        font-size: 16px;
+    }
+    
+    .mobile-menu-section {
+        margin-bottom: 0;
+        padding-right: 5px;
+    }
+    
+    .video-upload {
+        padding-left: 5px;
+    }
+}
+
+/* For ultra small devices (less than 375px) */
+@media screen and (max-width: 374px) {
+    .summerizer-container {
+        padding: 3px;
+    }
+    
+    .custom-file-upload {
+        height: 50px;
+        font-size: 12px;
+    }
+    
+    .notes-sidebar {
+        max-height: 120px;
+    }
+    
+    .notes-container {
+        max-height: calc(100vh - 320px);
+    }
+    
+    .markdown-body {
+        font-size: 11px;
+    }
+    
+    .markdown-body h1 {
+        font-size: 16px;
+    }
+    
+    .markdown-body h2 {
+        font-size: 14px;
+    }
+    
+    .markdown-body h3 {
+        font-size: 12px;
+    }
+    
+    .summ-mobile-menu-button {
+        margin:0;
+        display: block;
+    }
+    
+    .desktop-sidebar {
+        display: none !important;
+    }
+}
+
+/* Landscape orientation for mobile devices */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .summerizer-container {
+        padding: 5px;
+    }
+    
+    .custom-file-upload {
+        height: 50px;
+        font-size: 14px;
+    }
+    
+    .notes-section {
+        display: flex;
+        flex-direction: row;
+        margin-top: 5px;
+    }
+    
+    .notes-sidebar {
+        width: 30%;
+        max-height: calc(100vh - 150px);
+        border-right: 4px double #ffffff;
+        border-bottom: none;
+        border-radius: var(--border-radius) 0 0 var(--border-radius);
+    }
+    
+    .notes-container {
+        width: 100%;
+        max-height: calc(100vh - 150px);
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+    
+    .sad-icon, .waiting-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    
+    .placeholder-text {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    
+    .placeholder-subtext {
+        font-size: 12px;
+    }
+}
+
+/* Improve accessibility for all screens */
+@media (prefers-reduced-motion: reduce) {
+    .sad-icon, #initialRightEye, #initialLeftEye, #leftPupil, #rightPupil, #leftEyebrow, #rightEyebrow, #mouth {
+        animation: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .summerizer-container {
+        position: static;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        padding: 0;
+    }
+    
+    .notes-sidebar, .video-upload, .save-summary-btn, .summ-menu-button {
+        display: none;
+    }
+    
+    .notes-container {
+        height: auto;
+        box-shadow: none;
+        border: none;
+    }
+    
+    .markdown-body {
+        font-size: 12pt;
+        color: black;
+    }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   NEW: Source / Mode toggles, YouTube zone, Update panel
+   ─────────────────────────────────────────────────────────────── */
+
+/* Toggle button groups (source & mode) */
+.source-toggle,
+.mode-toggle {
+    display: flex;
+    gap: 0;
+}
+
+.source-toggle .btn-check + .btn,
+.mode-toggle .btn-check + .btn {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.source-toggle .btn-check:checked + .btn,
+.mode-toggle .btn-check:checked + .btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+/* YouTube URL input zone */
+#youtubeZone .input-group {
+    max-width: 100%;
+}
+
+#youtubeUrl {
+    border-color: var(--border-color);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+#youtubeUrl:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(5, 158, 163, 0.25);
+}
+
+/* Upload zone (keep existing form style, add minor tweaks) */
+#uploadZone label.upload-label {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    padding: 1.5rem;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-light);
+    transition: border-color 0.2s;
+}
+
+#uploadZone label.upload-label:hover {
+    border-color: var(--primary-color);
+}
+
+/* Generate button */
+#generateBtn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+    padding: 0.5rem 2rem;
+    transition: background-color 0.2s;
+}
+
+#generateBtn:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+#generateBtn:disabled {
+    opacity: 0.65;
+}
+
+/* Notes action bar (download / pdf / save) */
+.notes-action-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.notes-action-bar .btn {
+    font-size: 0.82rem;
+}
+
+/* Update panel */
+.update-panel {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--background-light);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+}
+
+.update-panel h6 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.update-panel textarea {
+    resize: vertical;
+    min-height: 60px;
+    border-color: var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.update-panel textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(5, 158, 163, 0.25);
+}
+
+.update-panel .image-attach {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.update-panel .image-attach label {
+    cursor: pointer;
+    color: var(--primary-color);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.update-panel .image-attach label:hover {
+    text-decoration: underline;
+}
+
+.update-panel .image-attach small {
+    color: var(--text-light);
+    font-size: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 180px;
+}
+
+#updateBtn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+}
+
+#updateBtn:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+#updateBtn:disabled {
+    opacity: 0.65;
+}
+
+/* Waiting subtext */
+#waitingSubtext {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ChatGPT-style Input Bar
+   ═════════════════════════════════════════════════════════════ */
+
+.input-bar {
+    background: #fff;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    padding: 12px 16px;
+    flex-shrink: 0;
+    z-index: 1002;
+    position: relative;
+    overflow: visible;
+}
+
+.input-bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+/* Source dropdown styling */
+#sourceDropdown {
+    min-width: 110px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#sourceDropdown .dropdown-toggle::after {
+    margin-left: 8px;
+}
+
+.dropdown-menu {
+    min-width: 150px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    z-index: 9999;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+}
+
+.dropdown-item:hover {
+    background-color: var(--background-light);
+}
+
+.dropdown-item.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.dropdown-item i {
+    font-size: 1rem;
+}
+
+.input-zone {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.upload-input-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    color: var(--text-light);
+    background: var(--background-light);
+    transition: all 0.2s;
+    width: 100%;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.upload-input-label span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 400px;
+    display: inline-block;
+}
+
+.upload-input-label:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.upload-input-label i {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+#youtubeUrl {
+    border-radius: var(--border-radius);
+    padding: 10px 14px;
+    width: 100%;
+}
+
+#generateBtn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+    padding: 10px 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#generateBtn:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+#generateBtn:disabled {
+    opacity: 0.65;
+}
+
+/* Update bar (appears after notes) */
+.update-bar {
+    margin-top: 10px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.update-bar .input-group {
+    border-radius: var(--border-radius);
+}
+
+.update-bar input[type="text"] {
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+#updateBtn {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+    font-weight: 600;
+}
+
+#updateBtn:hover:not(:disabled) {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+
+/* Chat placeholder (centered content) */
+.chat-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 40px;
+}
+
+.chat-placeholder svg {
+    max-width: 120px;
+    height: auto;
+}
+
+/* Notes container scrollable */
+.notes-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+    min-height: 0;
+}
+
+.notes-container .chat-placeholder {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.notes-container .markdown-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Notes action bar */
+.notes-action-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+/* Responsive tweaks for new controls */
+@media (max-width: 768px) {
+    .input-bar-inner {
+        flex-wrap: wrap;
+    }
+
+    .input-zone {
+        width: 100%;
+        order: 10;
+        margin-top: 8px;
+    }
+
+    #generateBtn {
+        order: 5;
+    }
+
+    .upload-input-label {
+        width: 100%;
+    }
+
+    .update-bar {
+        padding: 0;
+    }
+
+    .notes-action-bar {
+        gap: 4px;
+    }
+
+    .summerizer-container {
+        left: 0;
+        width: 100vw;
+    }
+}
+
+/* ── Upload Progress Bar ───────────────────────────── */
+.upload-wrapper {
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto; /* Center on larger screens */
+}
+
+.progressbar {
+    width: 100%;
+    height: 20px;
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: var(--primary-color);
+    overflow: hidden;
+    position: relative;
+}
+
+.progressbarfill {
+    height: 100%;
+    width: 0%;
+    background-color: #007bff;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ── Responsive Tweaks for Progress Bar ───────────── */
+@media (max-width: 768px) {
+    .upload-wrapper {
+        max-width: 100%; /* Full width on mobile */
+        margin-top: 0.75rem;
+    }
+
+    .progressbar {
+        height: 16px; /* Smaller height on mobile */
+        border-radius: 8px;
+    }
+
+    .progressbarfill {
+        border-radius: 8px;
+        font-size: 10px; /* Smaller font */
+    }
+}
+
+@media (max-width: 480px) {
+    .progressbar {
+        height: 14px; /* Even smaller on very small screens */
+        border-radius: 7px;
+    }
+
+    .progressbarfill {
+        border-radius: 7px;
+        font-size: 9px;
+    }
+}

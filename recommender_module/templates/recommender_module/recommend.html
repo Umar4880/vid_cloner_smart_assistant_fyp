@@ -1,0 +1,130 @@
+{% extends 'Dashboard.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link href="{% static 'assets/css/landingPage/recommend.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="recommend-container">
+    <div class="recommend-content">
+        <!-- Welcome Screen - Updated class names to avoid conflicts with Dashboard.css -->
+        <div class="rec-intro-section" id="welcomeSection">
+            <div class="rec-intro-content">
+                <img src="{% static 'assets/img/book.png' %}" alt="Book Recommendation" class="rec-intro-icon" 
+                     onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/2232/2232688.png';">
+                <h2 class="rec-intro-title">Book Recommendation System</h2>
+                <p class="rec-intro-text">Tell us what you're looking for, and we'll recommend books tailored to your interests.</p>
+                <div class="rec-intro-examples">
+                    <h4>Example prompts you can try:</h4>
+                    <ul>
+                        <li>"I want to read something about artificial intelligence and ethics"</li>
+                    </ul>
+                </div>
+                <p class="rec-intro-instruction">Just type your request in the box below and click the search icon!</p>
+            </div>
+        </div>
+        
+        <!-- Output Section -->
+        <div class="outputContainer" id="outputContainer" style="display: none;">
+            <textarea id="outputTextarea" class="output-textarea" readonly></textarea>
+        </div>
+         <!-- Waiting Icon -->
+        <div class="waiting-content" id="waitingPlaceholder" style="display: none;">
+            <svg class="waiting-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="200" height="200">
+                <!-- Face -->
+                <circle cx="32" cy="32" r="30" fill="#059ea3" />
+                
+                <!-- Left Eye -->
+                <ellipse id="leftEye" cx="24" cy="26" rx="5" ry="7" fill="#ffffff" />
+                <circle id="leftPupil" cx="24" cy="26" r="3" fill="#000" />
+            
+                <!-- Right Eye -->
+                <ellipse id="rightEye" cx="40" cy="26" rx="5" ry="7" fill="#ffffff" />
+                <circle id="rightPupil" cx="40" cy="26" r="3" fill="#000" />
+            
+                <!-- Eyebrows -->
+                <path id="leftEyebrow" d="M20 20 Q24 16 28 20" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round" />
+                <path id="rightEyebrow" d="M36 20 Q40 16 44 20" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round" />
+            
+                <!-- Mouth -->
+                <path id="mouth" d="M24 44 Q32 48 40 44" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round" />
+            </svg>
+            <h3 class="placeholder-text">Processing your request...</h3>
+            <p class="placeholder-subtext">Please wait while we generate your recommendations.</p>
+        </div>
+       
+        <!-- Recommendations Section -->
+        <div id="recommendations" class="recommended-books" style="display: none;">
+            <h3 class="text-center">Recommended Books</h3>
+            <div class="row books-container" id="booksContainer">
+                <!-- Predefine placeholders for books -->
+                <div class="book-template" style="display: none;" id="bookTemplate">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card book-card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title" data-book-title></h5>
+                                <p class="card-text-desc" data-book-description></p>
+                                <p class="card-text-auth" data-book-author></p>
+                                <p class="card-text-rating" data-book-publisher></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Input Section -->
+    <div class="card input-card shadow" id="inputCard">
+        <form id="recommenderForm">
+            <div class="Input-container">
+                <textarea class="form-control" id="userInput" rows="3" placeholder="Type here..." required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary px-4">
+                    <i class="bi bi-search"></i>
+                    <span class="btn-text">Recommend</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Book Detail Modal -->
+    <div class="modal fade" id="bookDetailModal" tabindex="-1" aria-labelledby="bookDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookDetailModalLabel">Book Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="book-detail-container">
+                        <h3 id="modalBookTitle" class="book-title"></h3>
+                        
+                        <div class="detail-section">
+                            <h4>Description</h4>
+                            <p id="modalBookDescription"></p>
+                        </div>
+                        
+                        <div class="detail-row">
+                            <div class="detail-column">
+                                <h4>Author</h4>
+                                <p id="modalBookAuthor"></p>
+                            </div>
+                            <div class="detail-column">
+                                <h4>Rating</h4>
+                                <div id="modalBookRating"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'assets/js/recommend.js' %}"></script>
+{% endblock %}

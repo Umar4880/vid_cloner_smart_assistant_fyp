@@ -1,0 +1,443 @@
+/*----------------------Timetable CSS Styles------------------------------*/
+
+/* Main Container Styles - Major fix for overflow issues */
+.timetable-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Card Styles - Fixed to prevent overflow */
+.tt-card {
+    width: 100%;
+    max-width: 95%;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    overflow-y: auto; /* Add vertical scrolling when content exceeds height */
+    max-height: 80vh; /* Limit maximum height to 80% of viewport height */
+    box-sizing: border-box;
+}
+
+
+.tt-card:hover, .tt-form-card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.tt-card-header {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    position: sticky; /* Keep the header visible when scrolling */
+    top: 0;
+    z-index: 10;
+    background-color: white;
+}
+
+.tt-card-body {
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-y: auto; /* Enable scrolling within the card body */
+}
+
+.timeTable-section{
+    width: 100%;
+    max-width: 95%;
+}
+
+/* Timetable Content Area - NEW: Added to fix scrolling when many entries exist */
+#timetableContent {
+    max-height: 65vh;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Individual day columns in the timetable */
+#timetableContent .col-md-4 {
+    margin-bottom: 15px;
+}
+
+/* Timetable Date Header - Make sticky within card */
+.timetable-date-header {
+    background-color: #059ea3 !important;
+    color: #fff !important;
+    padding: 15px !important;
+    border-radius: 8px 8px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+/* Custom scrollbar styles for better appearance */
+.tt-card::-webkit-scrollbar,
+#timetableContent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tt-card::-webkit-scrollbar-track,
+#timetableContent::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0 12px 12px 0;
+}
+
+.tt-card::-webkit-scrollbar-thumb,
+#timetableContent::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+.tt-card::-webkit-scrollbar-thumb:hover,
+#timetableContent::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* Form Control Styles - Fixed width issues */
+.form-control, .form-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #059ea3;
+    box-shadow: 0 0 0 0.25rem rgba(5, 158, 163, 0.25);
+}
+
+.course-button-section{
+    display: flex;
+    align-items: center;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #059ea3 !important;
+    border-color: #059ea3 !important;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-primary:hover {
+    background-color: #048388 !important;
+    border-color: #048388 !important;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn-success {
+    background-color: #27ae60;
+    border-color: #27ae60;
+}
+
+.btn-success:hover, .btn-danger:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary, .btn-outline-danger {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+/* Time Slot Styles */
+.time-slot {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fff;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.time-slot:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-color: #059ea3;
+}
+
+/* Alert Styles */
+.alert {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.alert-secondary {
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+    color: #4a5568;
+}
+
+.alert-info {
+    background-color: #e9f7ff;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+/* Step Indicators */
+h5 {
+    color: #059ea3;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+}
+
+.modal-header {
+    background: #f8f9fa;
+    border-radius: 12px 12px 0 0;
+    padding: 15px 20px;
+}
+
+.modal-footer {
+    border-top: 0;
+    padding: 15px 20px;
+}
+
+/* PDF View Specific Styles */
+.pdf-view {
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.pdf-view .title {
+    color: #333;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.pdf-view .date-header {
+    background-color: #059ea3;
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.pdf-view .timetable-day {
+    margin-bottom: 40px;
+}
+
+/* Helper Classes */
+.hidden {
+    display: none;
+}
+
+/* Weekly view specific styles */
+.weekly-view-container {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto; /* Add horizontal scrolling for wide tables */
+    max-height: 75vh; /* Limit height and enable vertical scrolling if needed */
+    overflow-y: auto;
+}
+
+/* Ensure the table maintains its structure while scrolling */
+.weekly-view-container table {
+    min-width: 100%;
+    table-layout: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Fix header to stay in place while scrolling */
+.weekly-view-container thead th {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.weekly-view-container .d-none {
+    display: none !important;
+}
+
+/* This ensures empty cards don't take up space in weekly view */
+.weekly-view-container .tt-card {
+    display: none;
+}
+
+/* Make sure daily view displays cards properly */
+.daily-view-container .tt-card {
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* Enhance view toggle buttons */
+#dailyViewBtn.active, #weeklyViewBtn.active {
+    background-color: #059ea3 !important;
+    color: white !important;
+    border-color: #059ea3 !important;
+}
+
+.btn-outline-primary:hover{
+    background-color: #048388 !important;
+    border-color: #048388 !important;
+    color: white !important;
+}
+
+.btn-outline-primary {
+    transition: all 0.3s ease;
+    color: #059ea3 !important;
+    border-color: #059ea3 !important;
+}
+
+/* Weekly view cells styling */
+.weekly-cell {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s ease;
+}
+
+.weekly-cell:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-color: #059ea3;
+}
+
+/* Day labels in weekly view */
+.day-label {
+    font-weight: 600;
+    color: #059ea3;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    background-color: #f8f9fa;
+}
+
+/* Time labels in weekly view */
+.time-label {
+    font-weight: 500;
+    color: #4a5568;
+    padding: 5px;
+    text-align: right;
+}
+
+/* Empty cells in weekly view */
+.empty-cell {
+    background-color: #f8f9fa;
+    min-height: 50px;
+    border-radius: 8px;
+}
+
+/* Print-specific styles */
+@media print {
+    body {
+        background: #fff;
+    }
+    
+    .btn, .alert-info, .no-print {
+        display: none !important;
+    }
+    
+    .tt-card {
+        box-shadow: none !important;
+        margin-bottom: 30px !important;
+        break-inside: avoid;
+    }
+    
+    .timetable-container {
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .pdf-view {
+        box-shadow: none;
+        padding: 0;
+    }
+}
+
+/* Responsive adjustments with stronger fixes */
+@media (max-width: 1200px) {
+    .tt-card {
+        max-width: 95%;
+        max-height: 75vh;
+    }
+    
+    #timetableContent {
+        max-height: 60vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .timetable-container {
+        padding: 10px;
+    }
+    
+    .tt-card {
+        margin-bottom: 20px;
+        max-width: 90%;
+        max-height: 70vh;
+    }
+    
+    #timetableContent {
+        max-height: 55vh;
+    }
+
+    .weekly-cell {
+        padding: 5px;
+        font-size: 0.85rem;
+    }
+    
+    .day-label, .time-label {
+        font-size: 0.9rem;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .timetable-container {
+        padding: 5px;
+    }
+    
+    .tt-card-body, .tt-card-header {
+        padding: 10px;
+    }
+    
+    .tt-card {
+        max-width: 100%;
+        max-height: 65vh;
+    }
+    
+    #timetableContent {
+        max-height: 50vh;
+    }
+}

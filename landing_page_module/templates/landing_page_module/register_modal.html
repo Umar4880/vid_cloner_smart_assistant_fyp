@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link href="{% static 'assets/css/landingPage/signup.css' %}" rel="stylesheet">
+{% endblock %}
+
+{%block header%}
+{%endblock%}
+
+{% block content %}
+<div class="form-container">
+    <form method="POST" action="{% url 'signup_view' %}" class="register-form">
+        <div class="form-content">
+            <!-- Signup Card Section -->
+            <div class="signup-card  col-md-4">
+                <div>
+                    <img class="welcome-img d-none d-md-block" src="{% static 'assets\img\welcome_to_VidCloner.png' %}" alt="welcome">
+                    <img class="welcome-img d-block d-md-none" src="{% static 'assets\img\welcomeBaloon.png' %}" alt="welcome">
+                </div>
+            </div>
+            <div class="d-block d-md-none">
+                <h2>Sign Up</h2>
+           </div>
+            <!-- Form Section -->
+            <div class="col-md-8 form-section">
+                <h2 class="d-none d-md-block">Sign Up</h2>
+                <div class="name-seciton">
+                    <div class="form-group">
+                        <label for="regFirstName">First Name</label>
+                        <input type="text" id="regFirstName" name="first_name" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regLastName">Last Name</label>
+                        <input type="text" id="regLastName" name="last_name" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <label for="regPassword">Password</label>
+                        <div class="passwordCriteria">(
+                            <p class="criteria" id="uppercase">uppercase,</p>
+                            <p class="criteria" id="lowercase">lowercase,</p>
+                            <p class="criteria" id="number">number,</p>
+                            <p class="criteria" id="special">symbol,</p>
+                            <p class="criteria" id="length">8-characters</p>)
+                        </div>
+                    </div>
+                    <input type="password" id="regPassword" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-group">
+                    <div class="label">
+                        <label for="regPassword">Confirm Password</label>
+                    </div>
+                    <input type="password" id="regConfirmPassword" name="confirm_password" placeholder="Confirm your password" required>
+                </div>
+                <p id="signupError" style="display: none; color: red;"></p>
+                <button type="submit" id="registerBtn" class="button">Register</button>
+                <p class="login-link">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{%block footer%}
+
+{%endblock%}
+
+{% block extra_js %}
+<script src="{% static 'assets/js/signup.js' %}"></script>
+{% endblock %}

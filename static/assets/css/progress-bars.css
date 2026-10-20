@@ -1,0 +1,110 @@
+/* Progress Dashboard Styles */
+.progress-dashboard {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.progress-dashboard h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.progress-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 30px;
+}
+
+.progress-container {
+    width: 100%;
+    margin-left: auto; /* Push to the right */
+    display: flex;
+}
+
+/* Renamed from .card-header to avoid conflicts */
+.progress-card-header {
+    padding: 10px 15px;
+    border-radius: 4px 4px 0 0;
+    background-color: #059ea3 !important;
+    text-align: center;
+}
+
+/* Renamed from .card-body to avoid conflicts */
+.progress-card-body {
+    padding: 15px;
+}
+
+.progress {
+    height: 20px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    transition: width 1s ease;
+}
+
+/* Color classes for different progress levels */
+.bg-success {
+    background-color: #28a745;
+}
+
+.bg-primary {
+    background-color: #059ea3 !important;
+}
+
+.bg-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+/* Weekly progress specific styles */
+/* Renamed from .weekly-progress-card to avoid conflicts */
+.progress-weekly-card {
+    margin-bottom: 20px;
+}
+
+/* Daily progress specific styles */
+.daily-progress-container {
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+.date-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.session-count {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Renamed from .card to avoid conflicts */
+.progress-chart-card {
+    background-color: #fff;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.623);
+    margin-bottom: 20px;
+    overflow: hidden;
+    margin-left: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .progress-container {
+        max-width: 100%;
+    }
+}

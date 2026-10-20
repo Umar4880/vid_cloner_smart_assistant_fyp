@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block extra_css%}
+<link href="{% static 'assets/css/landingPage/login.css' %}" rel="stylesheet">
+{%endblock%}
+
+{% block header %}
+  {% comment %} {{ block.super }}  <!-- Retains the header from base.html --> {% endcomment %}
+{% endblock %}
+
+{%block content%}
+<div class="form-container" id="formContainer">
+    <form method="POST" action="{% url 'login_view' %}"  id="loginForm" class="login-form">
+        {% csrf_token %}
+        <div class="form-content row" id="formContent">
+            <div class="col-12 col-md-6 p-md-1 p-lg-5 d-flex justify-content-center align-item-center flex-column">
+                <div class="img-container d-md-none">
+                    <img class='login-amico' src="{%static 'assets\img\Login-amico.png'%}" alt="login-amico">
+                </div>
+                <div class="form-group">
+                    <h2>Lets Get Started!</h2>
+                    <p >Your Smart Video Assistant Awaits – Login Now!</p>
+                </div>
+                <div class="m-0">
+                    <p class="login-Error m-0" id="loginError" style="display: none; color: red;"></p>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="button">Login</button>
+            <p class="signup-link">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+            </div>
+            <div class="col-md-6 p-0">
+                <img class="img-fluid d-none d-md-block login-img" src="{% static 'assets/img/login_illustration.jpeg' %}" alt="Login-img">
+            </div>
+        </div>
+        <div class="tv-section animate__animated animate__fadeIn" id="tvSection" >
+            <div class="left-system animate__animated animate__slideInLeft">
+                <div class="system-internal-body">
+                    <div class="system-top"></div>
+                    <div class="system-bottom">
+                        <span class="disk-input"></span>
+                        <span class="start-button">hp</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tv-area">
+                <div class="tv-body animate__animated animate__slideInDown">
+                    <div class="tv-screen" id="tvScreen">
+                        <div class="static-container" id="static-container"></div>
+                        <i class="bi bi-check-circle animate__animated animate__fadeIn animate__duration-2s" id="checkCircle"></i>
+                    </div>
+                </div>
+                <div class="tv-rod animate__animated animate__slideInUp"></div>
+                <div class="tv-stand animate__animated animate__slideInUp"></div>
+                <div class="keyboard animate__animated animate__slideInUp">
+                    <!-- <div class="key-area"> -->
+                    <div class="keyrow">
+                        <button class="key">Tab</button>
+                        <button class="key">Q</button>
+                        <button class="key">W</button>
+                        <button class="key">E</button>
+                        <button class="key">R</button>
+                        <button class="key">T</button>
+                        <button class="key">Y</button>
+                        <button class="key">U</button>
+                        <button class="key">I</button>
+                        <button class="key">O</button>
+                        <button class="key">P</button>
+                    </div>
+                    <div class="keyrow">
+                        <button class="key">A</button>
+                        <button class="key">S</button>
+                        <button class="key">D</button>
+                        <button class="key">F</button>
+                        <button class="key">G</button>
+                        <button class="key">H</button>
+                        <button class="key">J</button>
+                        <button class="key">K</button>
+                        <button class="key">L</button>
+                        <button class="key key-enter">Enter</button>
+                    </div>
+                    <div class="keyrow">
+                        <button class="key">shift </button>
+                        <button class="key">Z</button>
+                        <button class="key">X</button>
+                        <button class="key">C</button>
+                        <button class="key">V</button>
+                        <button class="key">B</button>
+                        <button class="key">N</button>
+                        <button class="key">M</button>
+                        <button class="key"><</button>
+                        <button class="key">></button>
+                        <button class="key">?</button>
+                    </div>
+                    <div class="keyrow">
+                        <button class="key">ctrl</button>
+                        <button class="key">fn</button>
+                        <button class="key">alt</button>
+                        <button class="key key-space">Space</button>
+                        <button class="key">ctrl</button>
+                        <button class="key">alt</button>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+            <div class="right-system animate__animated animate__slideInRight
+                        animate__duration-6s ">
+                <div class="system-internal-body">
+                    <div class="system-top"></div>
+                    <div class="system-bottom">
+                        <span class="disk-input"></span>
+                        <span class="start-button" >hp</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{%endblock%}
+
+{% block footer %}
+<!-- Leave the footer block empty -->
+{% endblock %}
+
+{%block extra_js%}
+<script src="{% static 'assets/js/login.js' %}"></script>
+{%endblock%}

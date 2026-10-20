@@ -1,0 +1,295 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Hero Section -->
+  <section id="hero" class="hero section dark-background">
+
+    <div id="hero-carousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="row">
+            <div class="col-md-8 carousel-container">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>VidCloner</span></h2>
+                <p class="animate__animated animate__fadeInUp">Your ultimate solution for turning long, complex videos into bite-sized summaries. No more wasting time! Upload your video, and let our smart engine do the rest, delivering key concepts and highlights in seconds.</p>
+                <a href="{% url 'login' %}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started!</a>
+            </div>
+            <div class="col-md-4 d-none d-md-flex carousel-container">
+                    <img class="img-fluid animate__animated animate__flip img-size" src="{% static 'assets/img/welcome-cartoon.png' %}" alt="Laptop-img">
+            </div>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+          <div class="row">
+              <div class="col-md-8 carousel-container">
+                  <h2 class="animate__animated animate__fadeInDown">Unlock the Power of Summarization</h2>
+                  <p class="animate__animated animate__fadeInUp">VidCloner, where lengthy videos become manageable! Simply upload your videos, and let our advanced AI analyze and extract essential insights, delivering clear and concise summaries. Eliminate the noise and focus on what truly matters for your success!</p>
+                  <a href="#" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started!</a>
+              </div>
+              <div class="col-md-4 d-none d-md-flex carousel-container">
+                  <img class="animate__animated animate__flip img-size" src="{% static 'assets/img/laptop-cartoon.png' %}" alt="Image of laptop">
+              </div>
+          </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+          <div class="row">
+              <div class="col-md-8 carousel-container">
+                  <h2 class="animate__animated animate__fadeInDown">Revolutionize Your Study Sessions</h2>
+                  <p class="animate__animated animate__fadeInUp">Meet the Timetable Assistant! Designed to help you balance study time effectively, our tool crafts a custom timetable based on your subjects and available hours. Stay on track and crush your academic goals with confidence!</p>
+                  <a href="#" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started!</a>
+              </div>
+              <div class="col-md-4 d-none d-md-flex carousel-container">
+                  <img class="img-fluid animate__animated animate__flip img-size" src="{% static 'assets/img/TimeTable-cartoon.png' %}" alt="Image of timetable">
+              </div>
+          </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="carousel-item">
+        <div class="row">
+            <div class="col-md-8 carousel-container">
+                <h2 class="animate__animated animate__fadeInDown">Discover Learning Resources</h2>
+                <p class="animate__animated animate__fadeInUp">Tired of searching through endless resources?<br>Let VidCloner's intelligent Source Recommender guide you to the best educational content. Get curated suggestions for books, websites, and cutting-edge AI tools based on your learning goals. Focus on learning, while we do the research for you!</p>
+                <a href="#" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started!</a>
+            </div>
+            <div class="col-md-4 d-none d-md-flex carousel-container">
+                <img class="img-fluid animate__animated animate__flip img-size" src="{% static 'assets/img/book-cartoon.png' %}" alt="Image of book" >
+            </div>
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+        <defs>
+            <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+        </defs>
+        <g class="wave1">
+            <use xlink:href="#wave-path" x="50" y="3"></use>
+        </g>
+        <g class="wave2">
+            <use xlink:href="#wave-path" x="50" y="0"></use>
+        </g>
+        <g class="wave3">
+            <use xlink:href="#wave-path" x="50" y="9"></use>
+        </g>
+    </svg>
+
+  </section>
+
+  <!-- Features 2 Section -->
+  <section id="features-2" class="features section features-2">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Features</h2>
+      <p> Here are some valueable features helps you to study modernly along with AI based tools. <b>VidCloner</b> your amazing assistant enable you to crack exams by providing summery of lengthy videos in minimal time, Provide you sources to learn effortlessly and assist you to study according to time table manage by AI.</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+      <div class="row gy-4 justify-content-between">
+        <div class="features-image col-lg-4 d-flex align-items-center" data-aos="fade-up">
+          <img src="{% static 'assets/img/features.png' %}" class="img-fluid" alt="">
+        </div>
+        <div class="col-lg-7 d-flex flex-column justify-content-center">
+
+          <div class="features-item d-flex mt-5 " data-aos="fade-up" data-aos-delay="500">
+            <i class="bi bi-camera-reels flex-shrink-0"></i>
+            <div>
+              <h4>AI-Powered Video Summarization</h4>
+              <p>Struggling to keep up with lengthy videos? Let VidCloner break them down into bite-sized summaries. Perfect for students and professionals who need quick access to key insights and information.</p>
+            </div>
+          </div><!-- End Features Item-->
+
+          <div class="features-item d-flex mt-5" data-aos="fade-up" data-aos-delay="300">
+            <i class="bi bi-book flex-shrink-0"></i>
+            <div>
+              <h4>Source Recommender</h4>
+              <p>Stop searching for the right materials! VidCloner provides you with personalized recommendations for books, websites, and online tools to help you dive deeper into your subjects.</p>
+            </div>
+          </div><!-- End Features Item-->
+
+          <div class="features-item d-flex mt-5" data-aos="fade-up" data-aos-delay="400">
+            <i class="bi bi-clock flex-shrink-0"></i>
+            <div>
+              <h4>Timetable Assistant</h4>
+              <p>Build a study routine that works for you! VidCloner's Timetable Assistant creates an efficient schedule based on your subjects, difficulty levels, and preferred study times.</p>
+            </div>
+          </div><!-- End Features Item-->
+
+          <div class="features-item d-flex mt-5" data-aos="fade-up" data-aos-delay="400">
+            <i class="bi bi-camera flex-shrink-0"></i>
+            <div>
+              <h4>Video Encoding</h4>
+              <p>VidCloner makes it easy to prepare your videos for sharing! Quickly encode and compress your content for optimal performance, ensuring that your audience gets the best viewing experience.</p>
+            </div>
+          </div><!-- End Features Item-->
+        </div>
+      </div>
+    </div>
+
+  </section><!-- /Features 2 Section -->
+
+  <!-- Services Section -->
+  <section id="services" class="services section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Services</h2>
+      <p>VidCloner's valueable services to whome students can enjoy and learn with more advance way!</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+          <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative" id="summery">
+              <div class="icon">
+                <i class="bi bi-camera-reels"></i>
+              </div>
+              <a href="{% url 'login' %}" class="stretched-link">
+                <h3>AI-Powered Video Summarization</h3>
+              </a>
+              <p>Transform lengthy videos into digestible summaries! With our AI-powered video summarization, you can extract key concepts quickly, saving time and enhancing your learning experience.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="200" id="recommender">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-book"></i>
+              </div>
+              <a href="{% url 'login' %}" class="stretched-link">
+                <h3>Source Recommender</h3>
+              </a>
+              <p>Get tailored learning resources just for you! VidCloner analyzes your preferences and suggests books, websites, and tools that align with your study needs and interests.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="300" id="timetable">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-clock"></i>
+              </div>
+              <a href="{% url 'login' %}" class="stretched-link">
+                <h3>Timetable Assistant</h3>
+              </a>
+              <p>Stay organized with our intelligent timetable assistant! Create customized study schedules, receive reminders, and manage your time effectively to achieve your academic goals.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 col-md-12" data-aos="fade-up" data-aos-delay="300" id="encoding">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-camera"></i>
+              </div>
+              <a href="{% url 'login' %}" class="stretched-link">
+                <h3>Video Encoding</h3>
+              </a>
+              <p>VidCloner simplifies the video encoding process! Convert your videos into various formats with ease, ensuring compatibility across all devices and platforms without compromising quality.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+      </div>
+    </div>
+    </section><!-- /Services Section -->
+
+    <!-- Call To Action Section -->
+    <section id="call-to-action" class="call-to-action section dark-background">
+
+      {% comment %} <img src="assets/img/cta-bg.jpg" alt=""> {% endcomment %}
+      <img src="{% static 'assets/img/cta-bg.jpg' %}" alt="CTA Background">
+
+
+      <div class="container">
+        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-10">
+            <div class="text-center">
+              <h3>Call To Action</h3>
+              <p>Ready to Transform Your Learning? Sign up for VidCloner today and unlock the power of efficient video summarization, personalized recommendations, and smart study planning. Your journey to smarter learning starts now!</p>
+              <a class="cta-btn" href="{% url 'signup' %}">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Call To Action Section -->
+
+    <!-- Team Section -->
+    <section id="team" class="team section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Team</h2>
+        <p>Meet Our fabulous and fantastic team</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="member">
+              {% comment %} <img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""> {% endcomment %}
+              {% comment %} <img src="{% static 'assets/img/team/team-1.jp' %}" alt="Team Member 1"> {% endcomment %}
+
+              <div class="member-content">
+                <h4>Rana Umar – Co-Founder</h4>
+                <span>Web & BackEnd Development </span>
+                <p>
+                  Rana Umar is the creative mind behind VidCloner's design. With a keen eye for aesthetics and user interface design, she ensures that our platform is not only functional but also visually appealing and user-friendly.His expertise in Python and Django powers the backbone of VidCloner, ensuring a seamless user experience.
+                </p>
+                <div class="social">
+                  <a href="https://x.com/@RanaUmar4880?mx=2" target="blank"><i class="bi bi-twitter-x"></i></a>
+                  <a href="https://www.facebook.com/rao.abdullah.39948856" target="blank"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/rana_umar4880" target="blank"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/ranaumar4880" target="blank"><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-6 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              {% comment %} <img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""> {% endcomment %}
+              {% comment %} <img src="{% static 'assets/img/team/team-3.jp' %}" alt="Team Member 3"> {% endcomment %}
+
+              <div class="member-content">
+                <h4>Waleed Ali – Co-Founder</h4>
+                <span>Database & BackEnd Developer</span>
+                <p>
+                  Waleed Ali plays a crucial role in managing and optimizing our data infrastructure. With expertise in SQL and database management systems, he ensures that VidCloner's data is secure, efficient, and scalable.
+                  His expertise in Python and Django ensures data management between UI and database and healty database connection at backend along with some technicalities.
+                </p>
+                <div class="social">
+                  <a href="https://twitter.com/waleedali" target="blank"><i class="bi bi-twitter-x"></i></a>
+                  <a href="https://www.facebook.com/waleedali" target="blank"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/waleedali" target="blank"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/waleedali" target="blank"><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+        </div>
+
+      </div>
+
+    </section>
+  {% endblock %}
+

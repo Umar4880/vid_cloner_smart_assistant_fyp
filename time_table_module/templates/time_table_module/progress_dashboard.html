@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Study Progress Dashboard{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">Study Progress Dashboard</h1>
+    
+    <!-- Weekly Progress Summary -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h4>Weekly Progress Summary</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <h5>Total Study Sessions</h5>
+                    <h2>{{ weekly_progress.total_slots }}</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5>Completed Sessions</h5>
+                    <h2>{{ weekly_progress.completed_slots }}</h2>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5>Completion Rate</h5>
+                    <h2>{{ weekly_progress.completion_percentage|floatformat:1 }}%</h2>
+                </div>
+            </div>
+            
+            <div class="mt-3">
+                <h5>Overall Weekly Progress</h5>
+                <div class="progress" style="height: 25px;">
+                    <div class="progress-bar {% if weekly_progress.completion_percentage > 80 %}bg-success{% elif weekly_progress.completion_percentage > 50 %}bg-primary{% else %}bg-warning{% endif %}" 
+                         role="progressbar" 
+                         style="width: {{ weekly_progress.completion_percentage }}%;" 
+                         aria-valuenow="{{ weekly_progress.completion_percentage }}" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100">{{ weekly_progress.completion_percentage|floatformat:1 }}%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Daily Progress -->
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h4>Daily Progress (Last 7 Days)</h4>
+        </div>
+        <div class="card-body">
+            {% for day in past_7_days %}
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <h5>{{ day.date }}</h5>
+                        <span>{{ day.completed_slots }} / {{ day.total_slots }} sessions completed</span>
+                    </div>
+                    <div class="progress" style="height: 20px;">
+                        <div class="progress-bar {% if day.completion_percentage > 80 %}bg-success{% elif day.completion_percentage > 50 %}bg-primary{% else %}bg-warning{% endif %}" 
+                             role="progressbar" 
+                             style="width: {{ day.completion_percentage }}%;" 
+                             aria-valuenow="{{ day.completion_percentage }}" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100">{{ day.completion_percentage|floatformat:1 }}%</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Course-specific progress could be added here in the future -->
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Future JavaScript for interactive charts and visualizations
+</script>
+{% endblock %}

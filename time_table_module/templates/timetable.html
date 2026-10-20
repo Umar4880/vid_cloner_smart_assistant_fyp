@@ -1,0 +1,327 @@
+{% extends 'Dashboard.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link href="{% static 'assets/css/landingPage/timetable.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="timetable-container" id="mainContainer">
+    <!-- Create Timetable Form Section -->
+    <div class="time-table-section" id="createTimetableSection">
+        <div class="tt-card p-4">
+            <!-- Study Preferences Section -->
+            <div id="studyPreferences" {% if has_preferences %}style="display: none;"{% endif %}>
+              <h3 class="text-center mb-4">Create Your Study Schedule</h3>
+              <p class="text-center text-muted mb-4">Organize your study time effectively by creating a personalized timetable based on your courses and availability.</p>
+              
+              <h5>Your Study Preferences</h5>
+              <p class="small text-muted mb-3">Tell us about your study habits so we can create a more personalized schedule for you.</p>
+              
+              <div class="mb-3">
+                <label for="studyGoals" class="form-label">Study Goals</label>
+                <select class="form-control" id="studyGoals">
+                  <option selected disabled>Select your primary goal</option>
+                  <option value="pass_exam">Pass an exam</option>
+                  <option value="high_grades">Achieve high grades</option>
+                  <option value="gain_knowledge">Gain deep knowledge</option>
+                  <option value="certification">Prepare for certification</option>
+                  <option value="skill_development">Develop practical skills</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="preferredStudyHours" class="form-label">Preferred Study Hours (per week)</label>
+                <input type="range" class="form-range" id="preferredStudyHours" min="1" max="40" step="1" value="15">
+                <div class="d-flex justify-content-between">
+                  <small>1 hour</small>
+                  <small id="studyHoursValue">15 hours</small>
+                  <small>40 hours</small>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="optimalStudyTime" class="form-label">Optimal Study Time</label>
+                <div class="d-flex flex-wrap">
+                  <div class="form-check me-3 mb-2">
+                    <input class="form-check-input" type="checkbox" id="morningStudy">
+                    <label class="form-check-label" for="morningStudy">Morning (5AM-12PM)</label>
+                  </div>
+                  <div class="form-check me-3 mb-2">
+                    <input class="form-check-input" type="checkbox" id="afternoonStudy">
+                    <label class="form-check-label" for="afternoonStudy">Afternoon (12PM-5PM)</label>
+                  </div>
+                  <div class="form-check me-3 mb-2">
+                    <input class="form-check-input" type="checkbox" id="eveningStudy">
+                    <label class="form-check-label" for="eveningStudy">Evening (5PM-10PM)</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="nightStudy">
+                    <label class="form-check-label" for="nightStudy">Night (10PM-5AM)</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="breakPreference" class="form-label">Break Preferences</label>
+                <div class="row g-2">
+                  <div class="col">
+                    <select class="form-control" id="breakDuration">
+                      <option selected disabled>Break duration</option>
+                      <option value="5">5 minutes</option>
+                      <option value="10">10 minutes</option>
+                      <option value="15">15 minutes</option>
+                      <option value="20">20 minutes</option>
+                      <option value="30">30 minutes</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <select class="form-control" id="breakFrequency">
+                      <option selected disabled>Break frequency</option>
+                      <option value="25">Every 25 minutes (Pomodoro)</option>
+                      <option value="45">Every 45 minutes</option>
+                      <option value="60">Every 60 minutes</option>
+                      <option value="90">Every 90 minutes</option>
+                      <option value="120">Every 120 minutes</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="studyIntensity" class="form-label">Study Session Intensity</label>
+                <select class="form-control" id="studyIntensity">
+                  <option selected disabled>How densely do you want your schedule?</option>
+                  <option value="intensive">Fill all available time slots (Intensive)</option>
+                  <option value="balanced">Leave some free slots (Balanced)</option>
+                  <option value="relaxed">Leave plenty of free time (Relaxed)</option>
+                  <option value="custom">Custom: specific number of free slots</option>
+                </select>
+                <div id="customFreeSlotsContainer" class="mt-2" style="display:none;">
+                  <label for="customFreeSlots" class="form-label">Number of free slots per day:</label>
+                  <input type="number" class="form-control" id="customFreeSlots" min="1" max="10" value="1">
+                </div>
+              </div>
+              
+              <button class="btn btn-primary w-100 mt-3" id="savePrefBtn">Continue to Course Setup</button>
+            </div>
+
+            <!-- Step 1: Add Courses and Generate Timetable -->
+            <div id="step1" {% if has_preferences and not has_courses %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+                <h3 class="text-center mb-4">Create Your Study Schedule</h3>
+                <p class="text-center text-muted mb-4">Organize your study time effectively by creating a personalized timetable based on your courses and availability.</p>
+                
+                <h5>Add Course Details</h5>
+                <p class="small text-muted mb-3">Add each course you need to study with its details and deadline.</p>
+                
+                <div class="mb-2">
+                    <label for="topicName" class="form-label small">Course Name</label>
+                    <input type="text" id="topicName" placeholder="Enter Course Name (e.g., Mathematics, Physics)" class="form-control">
+                </div>
+                
+                <div class="mb-2">
+                    <label for="courseType" class="form-label small">Course Type</label>
+                    <select id="courseType" class="form-control">
+                        <option disabled selected>Select Course Type</option>
+                        <option value="Theory">Theory</option>
+                        <option value="Practical">Practical</option>
+                        <option value="Project">Project-based</option>
+                        <option value="Mixed">Mixed</option>
+                    </select>
+                </div>
+                
+                <div class="mb-2">
+                    <label for="topicDifficulty" class="form-label small">Difficulty Level</label>
+                    <select id="topicDifficulty" class="form-control">
+                        <option disabled selected>Select Difficulty</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
+                
+                <div class="mb-2">
+                    <label for="coursePriority" class="form-label small">Priority</label>
+                    <select id="coursePriority" class="form-control">
+                        <option disabled selected>Select Priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="topicDeadline" class="form-label small">Deadline</label>
+                    <input type="date" id="topicDeadline" class="form-control">
+                </div>
+                
+                <div class="course-button-section">
+                    <button class="btn btn-primary w-100 me-2" id="addCourseBtn">Add Course</button>
+                    <button class="btn btn-primary w-100 " id="generateBtn">Generate Timetable</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Generated Timetable Section -->
+    <div id="generatedTimetableSection" class="timeTable-section" {% if not timetable %}class="hidden"{% endif %}>
+        {% csrf_token %}
+
+        {% if message %}
+            <div class="alert alert-warning text-center">{{ message }}</div>
+        {% endif %}
+        
+        
+        <!-- Timetable content will be generated here -->
+        <div id="timetableContent" class="row">
+            <!-- This will be filled by JavaScript -->
+        </div>
+    </div>
+    
+    <!-- PDF View Section -->
+    <div id="pdfViewSection" class="pdf-view" style="display: none;">
+        <div class="mb-3 text-end no-print">
+            <button class="btn btn-secondary" id="backToTimetableBtn">
+                <i class="bi bi-arrow-left"></i> Back to Timetable
+            </button>
+            <button class="btn btn-primary ms-2" onclick="window.print()">
+                <i class="bi bi-printer"></i> Print
+            </button>
+        </div>
+        
+        <h1 class="title">Study Timetable</h1>
+        
+        <!-- PDF content will also be generated dynamically -->
+        <div id="pdfViewContent">
+            <!-- Dynamic content goes here -->
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Time Slot</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="editSlotId">
+                        <div class="mb-3">
+                            <label for="editTopic" class="form-label">Course Name</label>
+                            <input type="text" class="form-control" id="editTopic" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editCourseType" class="form-label">Course Type</label>
+                            <select class="form-select" id="editCourseType" required>
+                                <option value="Theory">Theory</option>
+                                <option value="Practical">Practical</option>
+                                <option value="Project">Project-based</option>
+                                <option value="Mixed">Mixed</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editStartTime" class="form-label">Start Time</label>
+                            <input type="time" class="form-control" id="editStartTime" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEndTime" class="form-label">End Time</label>
+                            <input type="time" class="form-control" id="editEndTime" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editDifficulty" class="form-label">Difficulty</label>
+                            <select class="form-select" id="editDifficulty" required>
+                                <option value="Easy">Easy</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPriority" class="form-label">Priority</label>
+                            <select class="form-select" id="editPriority" required>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editDeadline" class="form-label">Deadline</label>
+                            <input type="date" class="form-control" id="editDeadline" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveChangesBtn">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Include the external timetable JS file -->
+<script src="{% static 'assets/js/timetable.js' %}"></script>
+<!-- Pass the data directly to external JavaScript -->
+<script>
+    // User state flags
+    const hasPreferences = {% if has_preferences %}true{% else %}false{% endif %};
+    const hasCourses = {% if has_courses %}true{% else %}false{% endif %};
+    
+    // Pass preferences data if available
+    {% if preferences %}
+    const initialPreferencesData = {
+        study_goal: "{{ preferences.study_goal }}",
+        preferred_study_hours: {{ preferences.preferred_study_hours }},
+        morning_study: {% if preferences.morning_study %}true{% else %}false{% endif %},
+        afternoon_study: {% if preferences.afternoon_study %}true{% else %}false{% endif %},
+        evening_study: {% if preferences.evening_study %}true{% else %}false{% endif %},
+        night_study: {% if preferences.night_study %}true{% else %}false{% endif %},
+        break_duration: "{{ preferences.break_duration }}",
+        break_frequency: "{{ preferences.break_frequency }}"
+    };
+    {% else %}
+    const initialPreferencesData = null;
+    {% endif %}
+    
+    // Pass courses data if available
+    {% if courses %}
+    const initialCoursesData = [
+        {% for course in courses %}
+        {
+            id: {{ course.id }},
+            name: "{{ course.name }}",
+            course_type: "{{ course.course_type }}",
+            difficulty: "{{ course.difficulty }}",
+            priority: "{{ course.priority }}",
+            deadline: "{{ course.deadline }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+    {% else %}
+    const initialCoursesData = null;
+    {% endif %}
+    
+    console.log('Initial courses data:', initialCoursesData);
+    console.log('Initial preferences data:', initialPreferencesData);
+    
+    // Make sure the proper form is shown on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, initializing form visibility');
+        
+        // If no preferences, show the preferences form
+        if (!hasPreferences) {
+            document.getElementById('studyPreferences').style.display = 'block';
+            document.getElementById('step1').style.display = 'none';
+        } 
+        // If preferences but no courses, show course form
+        else if (hasPreferences && !hasCourses) {
+            document.getElementById('studyPreferences').style.display = 'none';
+            document.getElementById('step1').style.display = 'block';
+        }
+    });
+</script>
+{% endblock %}

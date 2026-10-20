@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timetable PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+        .title {
+            text-align: center;
+            color: #0d6efd;
+            margin-bottom: 30px;
+        }
+        .timetable-day {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+        .date-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 5px solid #0d6efd;
+        }
+        .time-slot {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .time-slot h4 {
+            color: #0d6efd;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .time-slot p {
+            margin: 5px 0;
+        }
+        .alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .no-print {
+            margin-bottom: 20px;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+            body {
+                margin: 0;
+                padding: 15px;
+            }
+            .time-slot {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        <button onclick="window.print()">Print Timetable</button>
+        <button onclick="window.history.back()">Back to Timetable</button>
+    </div>
+    
+    <h1 class="title">Study Timetable</h1>
+    
+    {% if message %}
+        <div class="alert">{{ message }}</div>
+    {% endif %}
+    
+    {% if timetable %}
+        {% for date, entries in timetable.items %}
+            <div class="timetable-day">
+                <div class="date-header">
+                    <h3 style="margin: 0;">{{ date }}</h3>
+                </div>
+                
+                {% for entry in entries %}
+                    <div class="time-slot">
+                        <h4>📚 {{ entry.topic }}</h4>
+                        <p>⏰ Time: {{ entry.time_slot }}</p>
+                        <p>📊 Difficulty: {{ entry.difficulty }}</p>
+                        <p>⏳ Allocated Hours: {{ entry.allocated_hours }}</p>
+                        <p>📅 Deadline: {{ entry.deadline }}</p>
+                    </div>
+                {% endfor %}
+                
+                {% if entries|length == 0 %}
+                    <p>No study sessions scheduled for this day.</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert">No timetable data available. Please generate a timetable first.</div>
+    {% endif %}
+</body>
+</html>

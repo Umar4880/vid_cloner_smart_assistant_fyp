@@ -1,0 +1,34 @@
+<svg class="custom-svg" version="1.1" viewBox="30 150 650 150" xmlns="http://www.w3.org/2000/svg" width="300px" height="300px">
+                    <defs>
+                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="100%" style="stop-color:rgb(255, 255, 255); stop-opacity:1"/>
+                            <!-- <stop offset="100%" style="stop-color:rgb(255, 255, 255); stop-opacity:1"/> -->
+                        </linearGradient>
+                        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="100%" style="stop-color: rgba(8, 194, 255, 0.6); stop-opacity:1"/>
+                            <!-- <stop offset="100%" style="stop-color:rgb(2, 237, 243); stop-opacity:1"/> -->
+                        </linearGradient>
+                        <linearGradient id="gradient3" x1="0%" y1="100%" x2="100%" y2="100%">
+                            <stop offset="50%" style="stop-color:rgb(13, 110, 253); stop-opacity:1"/>
+                            <stop offset="100%" style="stop-color:rgb(255, 255, 255); stop-opacity:1"/>
+                        </linearGradient>
+                        <linearGradient id="e0e5e6" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="20%" style="stop-color: rgb(8, 194, 255); stop-opacity: 1">
+                                <animate attributeName="stop-color" values="rgb(8, 194, 255); rgba(255, 255, 255, 0.7); rgb(188, 242, 246)" dur="1.5s" repeatCount="indefinite" />
+                            </stop>
+                            <stop offset="100%" style="stop-color: rgba(255, 255, 225, 0.7); stop-opacity: 1">
+                                <animate attributeName="stop-color" values="rgba(255, 255, 255, 0.7); rgba(8, 194, 255, 0.7); rgba(188, 242, 246, 0.7)" dur="1.5s" repeatCount="indefinite" />
+                            </stop>
+                        </linearGradient>
+                    </defs>         
+                    <path class="video.icon" transform="translate(150,50)" d="m0 0h199l8 7 5 10v8l-3 6-4 5-9 5-15 4-4 3h-2l-2 4-3 7v8l5 10 8 5 3 1 185 1 9 4 6 8 3 8-1 8-6 9-10 6-13 1h-68l-11 2-7 6-3 6v12l4 8 9 6 4 1h119l7 3 5 5 5 8 1 9-4 9-9 8-2 1-9 1-116 1-8 4-5 8-1 2v11l4 8 6 5 6 2h78l10 4 6 7 4 11-3 10-6 7-7 4-5 1-177 1-9 3v2h-2l-2 4-3 7v8l5 10 8 5 5 1h71l20 1 8 4 6 7 2 5v11l-4 8-6 5-5 2-229 1h-40l-17-2-17-6-13-8-9-7-10-10-10-15-6-14-4-15-1-12 1-215 3-15 7-17 8-12 8-10h2v-2l13-10 16-8 12-4z" fill="url(#gradient1)" />
+                    <path transform="translate(150,50)" d="m0 0h199l8 7 5 10v8l-3 6-4 5-9 5-15 4-4 3h-2l-2 4-3 7v8l5 10 8 5 3 1 185 1 9 4 6 8 3 8-1 8-6 9-10 6-13 1h-68l-11 2-7 6-3 6v12l4 8 9 6 4 1h119l7 3 5 5 5 8 1 9-4 9-9 8-2 1-9 1-116 1-8 4-5 8-1 2v11l4 8 6 5 6 2h78l10 4 6 7 4 11-3 10-6 7-7 4-5 1-177 1-9 3v2h-2l-2 4-3 7v8l5 10 8 5 5 1h71l20 1 8 4 6 7 2 5v11l-4 8-6 5-5 2-229 1h-40l-17-2-17-6-13-8-9-7-10-10-10-15-6-14-4-15-1-12 1-215 3-15 7-17 8-12 8-10h2v-2l13-10 16-8 12-4z" fill="url(#gradient3)"/>
+                    <path transform="translate(167,109)" d="m0 0h12l12 5 24 14 52 30 17 10 26 15 24 14 21 12 12 8 6 7 4 10v13l-5 12-6 7-17 10-52 30-24 14-28 16-24 14-26 15-8 5-11 3-11-1-10-5-6-5-5-8-2-7-1-8v-201l3-10 6-9 9-7z" fill="#e0e5e6"/>
+                    <path transform="translate(490,392)" d="m0 0h38l6 3 5 5 4 7 1 9-3 8-8 7-7 3-9 1h-13l-14-1-10-7-4-6-1-3v-10l3-7 4-5z" fill="#e0e5e6"/>
+                    <path transform="translate(577,307)" d="m0 0h32l8 4 7 10 1 3v9l-4 8-8 6-10 3h-23l-8-3-9-8-3-7v-8l5-10 9-6z" fill="#e0e5e6"/>
+                    <path transform="translate(622,221)" d="m0 0h26l10 4 7 8 3 7-1 10-9 10-9 4-12 1h-10l-9-2-9-6-5-7-1-3v-10l3-6 5-5 7-4z" fill="#e0e5e6"/>
+                    <path transform="translate(583,135)" d="m0 0h28l9 4 5 5 4 6 1 3v8l-4 7-8 7-8 2h-28l-8-3-5-5-4-6-1-4v-7l4-8 7-6z" fill="#e0e5e6"/>
+                    <path transform="translate(405,50)" d="m0 0h34l8 4 6 7 3 9-2 9-6 7-9 5-5 1h-25l-9-4-6-5-4-8v-9l3-7 5-6z" fill="#e0e5e6"/>
+                    <path transform="translate(1192,964)" d="m0 0 5 1 1 1v7l-9 41-4 16-4 8-5 1-4-3v-7l9-40 5-19 4-5z" fill="url(#gradient2)"/>
+                    <path transform="translate(1388,964)" d="m0 0 6 1v11l-12 53-4 9-1 1h-7l-2-2 1-9 11-49 4-12z" fill="url(#gradient2)"/>
+                </svg>

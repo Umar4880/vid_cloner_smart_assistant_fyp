@@ -1,0 +1,471 @@
+/* General Styles */
+
+
+.form-content::-webkit-scrollbar {
+    width: 12px; /* Scrollbar width */
+    border-radius: 20px; /* Match the border-radius of the container */
+}
+
+.form-content::-webkit-scrollbar-track {
+    background: #dad9d9; /* Background of the track */
+    border-radius: 20px; /* Match the border-radius of the container */
+}
+
+.form-content::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 20px; /* Match the border-radius of the container */
+    border: 2px solid #f1f1f1; /* Optional: Add spacing to blend with track */
+}
+
+.form-content::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker shade when hovering */
+}
+
+
+.header {
+    display: none !important;
+}
+
+/* Container */
+.form-container {
+    padding: 20px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background:linear-gradient(90deg,#ffffff,#1bd6da);
+}
+
+.img-container{
+    width: 100%;
+    height: 30%;
+}
+
+/* for small screen */
+.login-amico{
+    width: 100%;
+    height: 100%;
+}
+
+/* for large screen */
+.login-img{
+    overflow: hidden;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+/* Form */
+.login-form {
+    width: 70%;
+    height: 80%;
+    background:linear-gradient(90deg,#ffffff,#ffffff,#0fd4db);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.74);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden; /* Prevents overflow */
+    color:rgb(0, 0, 0);
+    /* padding: 20px; */
+    position: relative;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    /* padding: 20px; */
+}
+
+/* Heading */
+.login-form h2{
+    margin: 20px auto;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: #062766;
+}
+
+.login-form p{
+    text-align: center;
+    color: #062766;
+    margin: 20px auto;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+/* Labels */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #062766;
+    margin-left: 5px;
+}
+
+/* Input Fields */
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: border 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button */
+.button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background: #062766;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #0e5691;
+}
+
+.button:disabled {
+    background-color: #aaa; /* Grey out the button */
+    cursor: not-allowed; /* Change cursor to show it's disabled */
+}
+
+/* Links */
+.login-link {
+    margin: 10px auto;
+    text-align: center;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.tv-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(360deg,#fdffff,#000000,#059ea3);
+}
+
+.left-system,
+.right-system {
+    width: 15%;
+    height: 45%;
+    background: linear-gradient(145deg, #000000, #333);
+    margin: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.system-internal-body {
+    width: 90%;
+    height: 95%;
+    border: 1px solid rgba(233, 232, 232, 0.534);
+    display: flex;
+    flex-direction: column;
+}
+
+.system-top {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.system-bottom {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.system-bottom .start-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(127, 127, 136);
+    background-color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    font-style: italic;
+    width: 20px;
+    height: 20px;
+}
+
+.system-bottom .disk-input{
+    width:50px;
+    height: 5px;
+}
+
+.system-bottom span {
+    background-color: whitesmoke;
+}
+
+.tv-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width:45%;
+    height: 100%;
+}
+
+.tv-body {
+    width: 90%;
+    height: 40%;
+    background: linear-gradient(145deg, #063636, #059ea3);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.tv-screen {
+    width: 95%;
+    height: 90%;
+    background-color: #000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid rgba(209, 204, 204, 0.39);
+    position: relative;
+    overflow: hidden;
+    padding:5px;
+    font-size: 150px;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #2e2d2d;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgb(37, 37, 37);
+    margin: 10px;
+    width: 90%;
+    height: 20%
+  }
+
+  .keyboard .keyrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8%;
+    height:80%;
+    margin: 0.1rem;
+    border: none;
+    background: #ddd;
+    border-radius: 5px;
+    font-size: 0.5rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .key-space,
+  .key-enter{
+    flex: 1;
+  }
+  
+  .key:hover {
+    background-color: #777171da;
+  }
+
+.tv-screen p{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.tv-rod {
+    width: 5%;
+    height: 5%;
+    background-color: black;
+}
+
+.tv-stand {
+    width: 40%;
+    height: 2%;
+    background: linear-gradient(145deg, #111, #000);
+    border-radius: 20px;
+    transform: scaleY(50%);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.static-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+.static-line {
+    width: 100%;
+    height: 2px;
+    margin: 2px;
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 5px,
+        #000 5px,
+        #000 10px
+    );
+    position: absolute;
+    animation: static-blink 0.1s infinite;
+}
+
+@keyframes static-blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+    .form-container {
+        padding: 0;
+        background: none;
+    }
+
+    .login-form {
+        background:linear-gradient(360deg,#ffffff,#ffffff,#1bd6da);
+        width: 100%;
+        height: 100vh;
+        box-shadow: none;
+        justify-content: flex-start;
+        padding: 10px;
+        border-radius: 0px;
+    }
+
+    .form-content {
+        padding: 10px;
+        height:100%;
+    }
+
+    .login-form h2 {
+        font-size: 22px;
+    }
+
+    .form-group input {
+        padding: 8px;
+    }
+
+    .button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .login-link {
+        font-size: 12px;
+    }
+
+    .tv-screen{
+        font-size: 80px;
+    }
+
+    .left-system,
+    .right-system{
+        height: 25%;
+        width: 14%;
+        margin: 5px;
+    }
+    .tv-area{
+        width: 68%;
+    }
+
+    .tv-body{
+        height:25%;
+        width: 90%;
+    }
+    .keyboard{
+        width: 100%;
+        height: 13%;
+        margin: 0px;
+    }
+
+    .key{
+        width: 8%;
+        height:90%;
+        font-size: 0.3rem;
+    }
+}
+
+@media (min-width:768px) and (max-width:991px){
+    .login-form {
+        width: 90%;
+        height: 90%;
+    }
+    .tv-screen{
+        font-size: 90px;
+    }
+
+    .tv-body{
+        height:35%;
+    }
+
+    .keyboard{
+        width: 90%;
+    }
+}
+
+@media (min-width:992px) and (max-width:1199px){
+    .login-form {
+        width: 80%;
+        height: 80%;
+    }
+
+    .form-content {
+        height:100%;
+    }
+}

@@ -1,0 +1,217 @@
+/* Daily Timetable Styling */
+.daily-timetable-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.timetable-header {
+    background-color: #00a7b3;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px 8px 0 0;
+}
+
+.timetable-header h3 {
+    margin: 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.timetable-header h3 i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.timetable-content {
+    padding: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Table Styling */
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    border-top: none;
+    border-bottom: 2px solid #dee2e6;
+    color: #343a40;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.timetable-row {
+    transition: background-color 0.2s;
+}
+
+.timetable-row:hover {
+    background-color: #f8f9fa;
+}
+
+/* Status styling */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    min-width: 80px;
+}
+
+.status-completed {
+    background-color: #d4edda;
+    color: #28a745;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #ffc107;
+}
+
+.status-missed {
+    background-color: #f8d7da;
+    color: #dc3545;
+}
+
+.status-rescheduled {
+    background-color: #d1ecf1;
+    color: #17a2b8;
+}
+
+/* Row styling by status */
+tr.status-completed {
+    background-color: rgba(40, 167, 69, 0.05);
+}
+
+tr.status-pending {
+    background-color: rgba(255, 193, 7, 0.05);
+}
+
+tr.status-missed {
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+tr.status-rescheduled {
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+/* Empty timetable styling */
+.empty-timetable {
+    text-align: center;
+    padding: 30px 20px;
+    color: #6c757d;
+}
+
+.empty-timetable i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.empty-timetable p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.empty-timetable .btn {
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 6px 20px;
+    border: 1px solid #00a7b3;
+    color: #00a7b3;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.empty-timetable .btn:hover {
+    background-color: #00a7b3;
+    color: white;
+}
+
+/* Course cards styling - matching timetable.js */
+.today-courses {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.course-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.course-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.course-card-header {
+    background-color: #00a7b3;
+    color: white;
+    padding: 10px 15px;
+}
+
+.course-card-header h5 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.course-card-body {
+    padding: 12px 15px;
+}
+
+.course-time-slot h6 {
+    margin: 0 0 12px 0;
+    color: #00a7b3;
+    font-size: 15px;
+}
+
+.course-details {
+    margin-bottom: 12px;
+}
+
+.course-details p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.course-status {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .timetable-header h3 {
+        font-size: 16px;
+    }
+    
+    .timetable-content {
+        padding: 10px;
+        max-height: 250px;
+    }
+    
+    .table thead th, 
+    .table tbody td {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    .status-badge {
+        font-size: 11px;
+        padding: 4px 6px;
+    }
+}

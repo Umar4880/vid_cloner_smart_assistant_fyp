@@ -1,0 +1,328 @@
+{% extends 'Dashboard.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link href="{% static 'assets/css/landingPage/setting.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-3">
+        <div class="d-md-none setting-header">
+            <a href="{%url 'Dashboard'%}"><i class="bi bi-arrow-left-short" id="left-arrow"></i></a>
+            <h2 class="d-md-none">Setting</h2>
+        </div>
+        <div class="setting-menu">
+            <div class="menu-contant">
+                <!-- Profile Section -->
+                <div class="setting-profile-section">
+                    <div class="setting-profile-avatar" id="setting-menu-profileAvatar">
+                        <img id="profileImage-menu" class="profile-avatar-img">
+                        <span id="setting-menu-avatarInitials"></span> 
+                    </div>
+                    <div class="setting-profile-info">
+                        <p id="setting-navbarProfileName">{{ user.username }}</p>
+                        <small id="setting-navbarProfileEmail">{{ user.email }}</small>
+                    </div>
+                </div>
+                <ul class="setting-nav flex-column">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-md-active" id="accountLink">
+                            <i class="bi bi-person-circle"></i>
+                            <p>Your Account</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id='securityLink'>
+                            <i class="bi bi-shield-lock"></i>
+                            <p>Login & Security</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id="contactLink">
+                            <i class="bi bi-envelope"></i>
+                            <p>Contact</p>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-8 col-lg-9">
+        <div class="setting-content ">
+            <!--Information Displayed for User Account (Profile Pic, Name, Email) Change-->
+            <div class="account" id="account">
+                <!--Profile picture Handling-->
+                <div class="profile-picture" id="profilePicture">
+                    <h3>Your Account</h3>
+                    <p>Profile Picture</p>
+                    <div class="set-cnt-profile-picture">
+                        <div class="setting-content-profile-avatar" id="setting-content-profileAvatar">
+                            <img id="profileImage-cnt" class="profile-avatar-img">
+                            <span id="setting-content-avatarInitials"></span>                           
+                        </div>
+                        <div class="photo-edit-button">
+                            <button class="remove-picture" id="removePic">Remove</button>
+                            <button class="edit-picture" id="changePic">Change</button>
+                        </div>
+                        <input type="file" id="profilePicInput" style="display: none;" accept="image/jpeg, image/png, image/gif">
+                        <p id="profilePicError" style="color: red; display: none;">Invalid file type or size. Please upload a valid image (JPEG, PNG, GIF) under 5 MB.</p>
+                    </div>
+                </div>
+
+                <!--Change Name Handling-->
+                <div class="name" id="name">
+                    <h3>Name</h3>
+                    <div class="display-name" id="displayName">
+                        <p id="username">{{ user.username }}</p>
+                        <button class="edit-name" id="editNameBtn">Edit</button>
+                    </div>
+                    <div class="edit-name" id="editName">
+                        <input id="contentInputFName" type="text" value="{{ user.first_name }}">
+                        <input id="contentInputLName" type="text" value="{{ user.last_name }}">
+                        <div class="name-edit-button">
+                            <button class="save-button" id="saveNameBtn">Save</button>
+                            <button class="cancel-button" id="cancelNameBtn">Cancel</button>
+                        </div>
+                        <p id="nameError" style="color: red; display: none;"></p>
+                    </div>
+                </div>
+
+                <!--Change Email Handling-->
+                <div class="email" id="email">
+                    <h3>Email</h3>
+                    <div class="display-email" id="displayEmail">
+                        <p id="userEmail">{{ user.email }}</p>
+                        <button class="edit-name" id="editEmailBtn" data-bs-toggle="modal" data-bs-target="#emailVerificationModal">Edit</button>
+                    </div>
+                    <div class="edit-email" id="editEmail">
+                        <input id="contentInputEmail" type="text" value="{{ user.email }}">
+                        <div class="email-edit-button ">
+                            <button class="save-button" id="saveEmailBtn">Save</button>
+                            <button class="cancel-button" id="cancelEmailBtn">Cancel</button>
+                        </div>
+                        <p id="emailError" style="color: red; display: none;"></p>
+                    </div>
+                </div>
+            </div><!--End of Information Displayed for User Account-->
+
+            <!--Information Displayed for Account Password Change-->
+            <div class="security" id="security">
+                <div class="password" id="password">
+                    <h3>Password</h3>
+                    <div class="display-password" id="displayPassword">
+                        <p id="passwordDisplay">************</p>
+                        <button class="edit-password" id="editPasswordBtn"data-bs-toggle="modal" data-bs-target="#emailVerificationModal" >Edit</button>
+                    </div>
+                    <div class="edit-password" id="editPassword">
+                        <input type="password" id="newPassword" placeholder="Enter new password">
+                        <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                        <span>The password should have:</span>
+                        <ul class="passwordCriteria" id="passwordCriteria">
+                            <li class="criteria" id="uppercase" >One uppercase letter,</li>
+                            <li class="criteria" id="lowercase">One lowercase letter,</li>
+                            <li class="criteria" id="number">One number,</li>
+                            <li class="criteria" id="special">One special symbol (@$!%*?&),</li>
+                            <li class="criteria" id="length">Minimum 8 characters</li>
+                        </ul> 
+                        <div class="password-edit-button">
+                            <button class="save-button" id="savePasswordBtn">Save</button>
+                            <button class="cancel-button" id="cancelPasswordBtn">Cancel</button>
+                        </div>
+                    </div>
+                    <p id="passwordError" style="color: red; display: none;"></p>
+                </div>
+
+                <!--Information Displayed for 2FA-->
+                <div class="twoFA" id="twoFA">
+                    <h3>2-Factor Authentication (2FA)</h3>
+
+                    <div class="enable2FA row">
+                        <div class="enbal2FA-text col-8 col-md-6">
+                            <p>Secure your account with 2FA and keep your data safe from unauthorized access by enabling 2FA.
+                                You can update your 2FA credentials at any time in your settings</p>
+                        </div>
+                        <div class="toggler col-4 col-md-6">
+                            <div class="slider-toggle" id="sliderToggle">
+                                <div class="slider-handle" id="sliderHandle"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--2FA Email Section -->
+                    <div class="email2FASection" id="email2FASection">
+                        <h4>Email</h4>
+                        <div class="addEmail2FA" id="addEmail2FA">
+                            <div class="d-flex">
+                                <i class="bi bi-exclamation-circle-fill text-warning pe-1"></i>
+                                <p>Add an Email</p>
+                            </div>
+                            <button  id="addEmail2FABtn">Add</button>
+                        </div>
+                        <div class="setupEmail2FA" id="setupEmail2FA" style="display: none;">
+                            <input class="d-block" type="email" id="twoFAEmail" placeholder="Enter your email">
+                            <div class="Email2FA-edit-button">
+                                <button class="save-button" id="saveEmail2FABtn">Save</button>
+                                <button class="delete-button" id="deleteEmail2FABtn" data-bs-toggle="modal" data-bs-target="#emailVerificationModal">Delete</button>
+                            </div>
+                        </div>
+                        <div class="displayEmail2FA"  id="displayEmail2FA" style="display: none;">
+                            <div class="d-flex twoFAemail-with-icon">
+                                <i class="bi bi-check-circle-fill text-success pe-1"></i>
+                                <p id="setEmail">{{twofa.email}}</p>
+                            </div>
+                            <button class="send-verification" id="editEmail2FABtn">Edit</button>
+                        </div>
+                        <p id="EmailErrorMessage" style="color: red; display: none;"></p>
+                    </div>
+            
+                    <!--2FA Phone Section -->
+                    <div class="phone2FASection" id="phone2FASection">
+                        <h4>Phone</h4>
+                        <div class="addPhone2FA" id="addPhone2FA">
+                            <div class="d-flex">
+                                <i class="bi bi-exclamation-circle-fill text-warning pe-1"></i>
+                                <p>Add a Phone no</p>
+                            </div>
+                            <button  id="addPhone2FABtn">Add</button>
+                        </div>
+                        <div class="setupPhone2FA" id="setupPhone2FA" style="display: none;">
+                            <input class="d-block" type="tel" id="twoFAPhone" placeholder="Enter your phone number" pattern="[0-9]{10,15}">
+                            <div class="Phone2FA-edit-button">
+                                <button class="save-button" id="savePhone2FABtn">Save</button>
+                                <button class="delete-button" id="deletePhone2FABtn" data-bs-toggle="modal" data-bs-target="#emailVerificationModal">Delete</button>
+                            </div>
+                        </div>
+                        <div class="displayPhone2FA" id="displayPhone2FA" style="display: none;">
+                            <div class="d-flex twoFAemail-with-icon">
+                                <i class="bi bi-check-circle-fill text-success pe-1"></i>
+                                <p id="setPhone">{{twofa.phone}}</p>
+                            </div>
+                            <button class="send-verification" id="editPhone2FABtn">Edit</button>
+                        </div>
+                        <p id="Phone-error-message" style="color: red; display: none;">Please provide valid phone no</p>
+                    </div>
+                </div>             
+            </div>   
+            
+            <!-- Contact Section -->
+            <div id="contact" class="contact section">
+               <!-- Section Title -->
+                <div class="container" >
+                    <div class="row gy-4 align-items-start">
+                        <!-- Contact Info -->
+                        <div class="col-lg-6">
+                            <div class="container section-title">
+                                <h2>Contact</h2>
+                                <p>Contact us for any query or to give some valuable feedback!</p>
+                            </div>
+                            <div class="info-item d-flex">
+                                <i class="bi bi-geo-alt"></i>
+                                <div>
+                                    <h3>Address</h3>
+                                    <p>Sambrial, Sialkot, Punjab, Pakistan</p>
+                                </div>
+                            </div>
+                            <div class="info-item d-flex">
+                                <i class="bi bi-telephone"></i>
+                                <div>
+                                    <h3>Call Us</h3>
+                                    <p>+92 309-4780810</p>
+                                    <p>+92 347-0925565</p>
+                                </div>
+                            </div>
+                            <div class="info-item d-flex">
+                                <i class="bi bi-envelope"></i>
+                                <div>
+                                    <h3>Email Us</h3>
+                                    <p>ranaumarranaumar@gmail.com</p>
+                                    <p>waleedali09az@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Contact Form -->
+                        <div class="col-lg-6">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="row gy-4">
+                                    <div class="col-md-6">
+                                        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea name="message" class="form-control" rows="6" placeholder="Message" required></textarea>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        {% if messages %}
+                                            <div class="alert-container">
+                                                {% for message in messages %}
+                                                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                        <button type="submit" class="btn btn-primary">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal for Verification Code -->
+            <div class="modal animate__animated" id="emailVerificationModal" tabindex="-1" aria-labelledby="emailVerificationModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header row">
+                            <h5 class="modal-title col-11" id="emailVerificationModalLabel">Verify Your Identity</h5>
+                            <button type="button" class="btn-close col-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="alert alert-info">
+                                <p><strong>Note:</strong> Once you verified! The code will get expired.</p>
+                            </div>
+                            <div id="verificationInfo">
+                                <p>We will send a 6-digit verification code to 
+                                    <strong id="verificationMethod"></strong>
+                                    Enter the code below to verify your identity.
+                                </p>
+                            </div>
+                            <input type="text" id="verificationCode" class="form-control" placeholder="Enter code here" maxlength="6" inputmode="numeric"/>
+                            <p id="send-text">Click to get code <a href="#" id="sendCodeBtn">Send Code</a></p>
+                            <p id="countdownMessage" style="display: none; color: gray;">
+                                Didn't get the code? Try again after <span id="countdownTimer">20</span> seconds.
+                            </p>
+                            <div id="verificationResult" style="display: none;">
+                                <i id="verificationIcon" class="bi bi-check-circle" style="font-size: 40px; color: green;"></i>
+                            </div>
+                            <p id="error-message" style="display: none; color: red;"></p>
+                            <p id="success-message" style="display: none; color: green;"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="submitCodeBtn" class="btn btn-primary">Verify</button>
+                            <p>Face problem while getting code?</p>
+                            <div class="tryMethod">
+                                <i class="bi bi-arrow-right-short"></i>
+                                <span id="switchMethod">Try another method</span>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'assets/js/setting.js' %}"></script>
+{% endblock %}
